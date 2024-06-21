@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Body&Soul"
-run/main_scene="res://Scenes/EVA_unitTest.tscn"
+run/main_scene="res://scn.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
