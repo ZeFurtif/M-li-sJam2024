@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpku4k386dm1d"]
+
+[ext_resource type="Script" path="res://Level/Hub/DoorLevelA.gd" id="1_1ge5h"]
+[ext_resource type="PackedScene" uid="uid://0t8rrv41blrx" path="res://Prefabs/player_prefab.tscn" id="2_qmwpd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qujec"]
+radius = 19.0
+height = 52.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_aym4c"]
+distance = -5.0
+
+[node name="Hub" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 429.0
+offset_top = 142.0
+offset_right = 457.0
+offset_bottom = 187.0
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-22, 37)
+script = ExtResource("1_1ge5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(466, 126)
+shape = SubResource("CapsuleShape2D_qujec")
+
+[node name="Player" parent="." instance=ExtResource("2_qmwpd")]
+position = Vector2(379, 171)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(382, 188)
+shape = SubResource("WorldBoundaryShape2D_aym4c")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
