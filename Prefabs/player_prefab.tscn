@@ -53,6 +53,7 @@ position = Vector2(-26, -24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Soul"]
 shape = SubResource("CircleShape2D_g1pwm")
+disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Soul"]
 sprite_frames = SubResource("SpriteFrames_bfonk")

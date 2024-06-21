@@ -2,9 +2,9 @@ extends Node2D
 
 var PLAYING_BODY = true
 
-const BODY_SPEED = 80
+const BODY_SPEED = 100
 const SOUL_SPEED = 90
-const JUMP_VELOCITY = -300
+const JUMP_VELOCITY = -200
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -18,6 +18,7 @@ func _process(delta):
 	
 	if PLAYING_BODY:
 		handle_body_movement(delta)
+		handle_soul_follow(delta)
 	else:
 		handle_soul_movement(delta)
 
@@ -55,4 +56,13 @@ func handle_soul_movement(delta):
 			
 	$Soul.move_and_slide()
 
+func handle_soul_follow(delta):
+	var target = $Body.position + Vector2(0,-30)
+	if not $Body/AnimatedSprite2D.flip_h:
+		target.x -= 30 
+	else:
+		target.x += 30
+	$Soul.velocity.x = (target.x - $Soul.position.x) * delta * SOUL_SPEED
+	$Soul.velocity.y = (target.y - $Soul.position.y) * delta * SOUL_SPEED
 
+	$Soul.move_and_slide()
