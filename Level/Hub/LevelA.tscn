@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://cfkt7p6wub67u"]
+[gd_scene load_steps=3 format=3 uid="uid://cfkt7p6wub67u"]
+
+[ext_resource type="PackedScene" uid="uid://0t8rrv41blrx" path="res://Prefabs/player_prefab.tscn" id="1_unoga"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ct4ml"]
 
 [node name="LevelA" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_unoga")]
+position = Vector2(231, 113)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(217, 142)
+shape = SubResource("WorldBoundaryShape2D_ct4ml")
