@@ -1,20 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://0t8rrv41blrx"]
+[gd_scene load_steps=9 format=3 uid="uid://0t8rrv41blrx"]
+
+[ext_resource type="Script" path="res://Scripts/player_controller.gd" id="1_f6xum"]
+[ext_resource type="Texture2D" uid="uid://ib6ypuh6lbe8" path="res://Assets/Body/brawlbot_trans.png" id="2_lkpes"]
+[ext_resource type="Texture2D" uid="uid://bwh34q67mwb4i" path="res://Assets/Soul/faded_sphere.png" id="3_iebjy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mhv57"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jk6qy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lkpes")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g1pwm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bfonk"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0ssf3"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(5, 5, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, -50, 0)
+scale_min = 0.01
+scale_max = 0.01
 
 [node name="Player" type="Node2D"]
+script = ExtResource("1_f6xum")
 
-[node name="Body" type="Node2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Body"]
+[node name="Body" type="CharacterBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
 shape = SubResource("CapsuleShape2D_mhv57")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body/CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body"]
+scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_jk6qy")
 
-[node name="Soul" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="Body"]
+
+[node name="Soul" type="CharacterBody2D" parent="."]
 position = Vector2(-26, -24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Soul"]
+shape = SubResource("CircleShape2D_g1pwm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Soul"]
+sprite_frames = SubResource("SpriteFrames_bfonk")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Soul"]
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_0ssf3")
+texture = ExtResource("3_iebjy")
