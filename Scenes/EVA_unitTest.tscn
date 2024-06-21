@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://sn3ih54n175b"]
+
+[ext_resource type="Texture2D" uid="uid://c0d5qs5h7q0vr" path="res://Assets/background01.png" id="1_uqcwk"]
+[ext_resource type="PackedScene" uid="uid://0t8rrv41blrx" path="res://Prefabs/player_prefab.tscn" id="1_w1s8y"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qqxda"]
+
+[node name="EvaUnitTest" type="Node2D"]
+
+[node name="Background01" type="Sprite2D" parent="."]
+position = Vector2(-98, 16)
+texture = ExtResource("1_uqcwk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_qqxda")
+
+[node name="Player" parent="." instance=ExtResource("1_w1s8y")]
+position = Vector2(0, -76)
