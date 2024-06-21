@@ -1,7 +1,13 @@
 extends Node2D
+class_name Player
 
+# BEHAVIOR
 var PLAYING_BODY = true
+var LAST_INTERACTION_TIME = 0
+var CURRENT_SHAPE = ShapeType.NONE
+var INTERACTING_WITH
 
+# STATS
 const BODY_SPEED = 120
 const SOUL_SPEED = 100
 const JUMP_VELOCITY = -250
@@ -21,7 +27,7 @@ func _process(delta):
 		handle_soul_follow(delta) # SOUL FOLLOWS BODY
 	else:
 		handle_soul_movement(delta) # INPUTS -> SOUL MOVEMENT
-
+		handle_soul_interact()
 func handle_body_movement(delta):
 	if not $Body.is_on_floor():
 		$Body.velocity.y += gravity * delta
@@ -59,7 +65,7 @@ func handle_soul_movement(delta):
 func handle_soul_follow(delta):
 	var target = $Body.position + Vector2(0,-30)
 	if not $Body/AnimatedSprite2D.flip_h:
-		target.x -= 30 
+		target.x -= 30
 	else:
 		target.x += 30
 	$Soul.velocity.x = (target.x - $Soul.position.x) * delta * SOUL_SPEED
@@ -70,3 +76,6 @@ func handle_soul_follow(delta):
 		$Soul/AnimatedSprite2D.flip_h = false
 
 	$Soul.move_and_slide()
+
+func handle_soul_interact():
+	pass
