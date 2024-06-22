@@ -12,6 +12,7 @@ func _process(delta):
 
 func _on_area_2d_area_entered(area):
 	if area.get_parent().is_in_group("soul"):
+		print("HELLO")
 		ENTERED = true
 
 
