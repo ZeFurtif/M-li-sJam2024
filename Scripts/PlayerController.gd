@@ -7,16 +7,20 @@ func _ready():
 	soul_target = $Body.position + Vector2(0, -20)
 
 func _process(delta):
-	if Input.is_action_just_pressed("switch"):
+	var switch = Input.get_axis("switch_up", "switch_down")
+	if PlayerGlobals.SOULS_AMOUNT > 0 and (Input.is_action_just_pressed("switch_up") or Input.is_action_just_pressed("switch_down")):
 		if PlayerGlobals.PLAYING_BODY:
 			PlayerGlobals.PLAYING_BODY = false
-			PlayerGlobals.PLAYING_SOUL = 0
 			reset_soul_arrow()
 		else:
-			if PlayerGlobals.PLAYING_SOUL >= PlayerGlobals.SOULS_AMOUNT-1:
+			PlayerGlobals.PLAYING_SOUL += int(switch)
+			if PlayerGlobals.PLAYING_SOUL < 0:
 				PlayerGlobals.PLAYING_BODY = true
-			else:
-				PlayerGlobals.PLAYING_SOUL += 1
+				PlayerGlobals.PLAYING_SOUL -= int(switch)
+			if PlayerGlobals.PLAYING_SOUL >= PlayerGlobals.SOULS_AMOUNT:
+				PlayerGlobals.PLAYING_BODY = true
+				PlayerGlobals.PLAYING_SOUL -= int(switch)
+			
 	if Input.is_action_just_pressed("spawn_soul"):
 		spawn_soul()		
 	if Input.is_action_just_pressed("kill_soul"):
@@ -30,6 +34,7 @@ func _process(delta):
 		handle_body_follow(delta)
 		set_soul_vignette(1)
 	handle_soul_follow(delta)
+	handle_soul_bound(delta)
 	show_soul_arrow()
 
 func handle_body_movement(delta):
@@ -63,23 +68,20 @@ func handle_soul_movement(delta):
 	var current_idx = 0
 	for soul in souls:
 		if soul.is_in_group("soul"):
-			if current_idx == PlayerGlobals.PLAYING_SOUL:
-				if (PlayerGlobals.BOUND):
-					soul.velocity.x = (PlayerGlobals.BINDING_LOCATION.x - soul.position.x) * delta * PlayerGlobals.SOUL_SPEED
-					soul.velocity.y = (PlayerGlobals.BINDING_LOCATION.y - soul.position.y) * delta * PlayerGlobals.SOUL_SPEED
+			if current_idx == PlayerGlobals.PLAYING_SOUL and !PlayerGlobals.BOUND[current_idx]:
+				var direction = Input.get_vector("move_left", "move_right","move_up", "move_down")
+				direction = direction.normalized()
+				if direction:
+					soul.velocity = direction * PlayerGlobals.SOUL_SPEED
+					if soul.velocity.x < 0:
+						soul.find_child("AnimatedSprite2D").flip_h = true
+					if soul.velocity.x > 0:
+						soul.find_child("AnimatedSprite2D").flip_h = false
 				else:
-					var direction = Input.get_vector("move_left", "move_right","move_up", "move_down")
-					direction = direction.normalized()
-					if direction:
-						soul.velocity = direction * PlayerGlobals.SOUL_SPEED
-						if soul.velocity.x < 0:
-							soul.find_child("AnimatedSprite2D").flip_h = true
-						if soul.velocity.x > 0:
-							soul.find_child("AnimatedSprite2D").flip_h = false
-					else:
-						soul.velocity.x = move_toward(soul.velocity.x, 0, PlayerGlobals.SOUL_SPEED)
-						soul.velocity.y = move_toward(soul.velocity.y, 0, PlayerGlobals.SOUL_SPEED)
-					soul.move_and_slide()
+					soul.velocity.x = move_toward(soul.velocity.x, 0, PlayerGlobals.SOUL_SPEED)
+					soul.velocity.y = move_toward(soul.velocity.y, 0, PlayerGlobals.SOUL_SPEED)
+				soul.move_and_slide()
+				return
 			current_idx += 1
 
 func handle_soul_follow(delta):
@@ -87,14 +89,11 @@ func handle_soul_follow(delta):
 	var current_idx = 0
 	for soul in souls:
 		if soul.is_in_group("soul"):
-			if (PlayerGlobals.BOUND) and current_idx == PlayerGlobals.PLAYING_SOUL:
-				soul.velocity.x = (PlayerGlobals.BINDING_LOCATION.x - soul.position.x) * delta * PlayerGlobals.SOUL_SPEED
-				soul.velocity.y = (PlayerGlobals.BINDING_LOCATION.y - soul.position.y) * delta * PlayerGlobals.SOUL_SPEED
-			else:
+			if !PlayerGlobals.BOUND[current_idx]:
 				if PlayerGlobals.PLAYING_BODY or current_idx != PlayerGlobals.PLAYING_SOUL:
 					soul_target.x = move_toward(soul_target.x, $Body.position.x, 0.7)
 					soul_target.y = move_toward(soul_target.y, $Body.position.y, 0.7)
-					var target = soul_target + Vector2(-25*(current_idx-1),-30)
+					var target = soul_target + Vector2(-25*(current_idx-1),-32)
 					var rdm = sin(Time.get_ticks_msec()*0.0005*(current_idx+1))*10
 					target.y += rdm
 					if not $Body/AnimatedSprite2D.flip_h:
@@ -109,8 +108,18 @@ func handle_soul_follow(delta):
 						soul.find_child("AnimatedSprite2D").flip_h = true
 					if soul.velocity.x > 0:
 						soul.find_child("AnimatedSprite2D").flip_h = true
-					current_idx += 1
-					soul.move_and_slide()
+			current_idx += 1
+			soul.move_and_slide()
+
+func handle_soul_bound(delta):
+	var souls = get_children()
+	var current_idx = 0
+	for soul in souls:
+		if soul.is_in_group("soul"):
+			if PlayerGlobals.BOUND[current_idx]:
+				soul.velocity.x = (PlayerGlobals.BOUND_POS[current_idx].x - soul.position.x) * delta * PlayerGlobals.SOUL_SPEED
+				soul.velocity.y = (PlayerGlobals.BOUND_POS[current_idx].y - soul.position.y) * delta * PlayerGlobals.SOUL_SPEED
+			current_idx += 1
 
 func spawn_soul():
 	if (PlayerGlobals.SOULS_AMOUNT < PlayerGlobals.MAX_SOULS):

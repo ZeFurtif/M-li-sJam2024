@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dukhtm8jquwvs"]
+[gd_scene load_steps=10 format=3 uid="uid://dukhtm8jquwvs"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_5awsi"]
 [ext_resource type="Shader" path="res://Shaders/vignette.gdshader" id="2_euhcv"]
 [ext_resource type="Texture2D" uid="uid://ib6ypuh6lbe8" path="res://Assets/Body/brawlbot_trans.png" id="2_lx07d"]
+[ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="4_shgdw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0gbl3"]
 
@@ -30,6 +31,23 @@ shader_parameter/color = null
 shader_parameter/alpha = 0.5
 shader_parameter/inner_radius = 0.0
 shader_parameter/outer_radius = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ohjvk"]
+shader = ExtResource("4_shgdw")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_5awsi")
@@ -68,6 +86,17 @@ size_flags_vertical = 3
 
 [node name="Vignette" type="ColorRect" parent="Body/Camera2D/CanvasLayer"]
 material = SubResource("ShaderMaterial_hcsup")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CRT" type="ColorRect" parent="Body/Camera2D/CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_ohjvk")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

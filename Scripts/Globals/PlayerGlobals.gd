@@ -3,12 +3,13 @@ extends Node
 var PLAYING_BODY = true
 var PLAYING_SOUL = 0
 var SOULS = []
+var BOUND = [false, false, false]
+var BOUND_POS = [Vector2.ZERO, Vector2.ZERO, Vector2.ZERO]
 var MAX_SOULS = 3
 var SOULS_AMOUNT = 0
 var BINDING_LOCATION
-var BOUND = false
 const BODY_SPEED = 120
-const SOUL_SPEED = 150
+const SOUL_SPEED = 100
 const JUMP_VELOCITY = -250
 
 func add_to_shape_array(shape):
@@ -19,3 +20,15 @@ func add_to_shape_array(shape):
 			SOULS[PLAYING_SOUL] = shape
 		else:
 			SOULS.append(shape)
+
+func bind(i):
+	if i >= 0 and i < len(SOULS):
+		BOUND[i] = true
+
+func unbind(i):
+	if i >= 0 and i < len(SOULS):
+		BOUND[i] = false
+
+func bind_pos(i, pos):
+	if i >= 0 and i < len(SOULS):
+		BOUND_POS[i] = pos
