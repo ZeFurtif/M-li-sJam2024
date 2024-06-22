@@ -34,7 +34,7 @@ scale_max = 0.01
 script = ExtResource("1_f6xum")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="Body" type="CharacterBody2D" parent="." groups=["body"]]
@@ -49,24 +49,22 @@ sprite_frames = SubResource("SpriteFrames_jk6qy")
 [node name="Node2D" type="Node2D" parent="Body"]
 
 [node name="Soul" type="CharacterBody2D" parent="." groups=["soul"]]
-position = Vector2(-26, -24)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Soul"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Soul" groups=["soul"]]
 shape = SubResource("CircleShape2D_g1pwm")
-disabled = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Soul"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Soul" groups=["soul"]]
 sprite_frames = SubResource("SpriteFrames_bfonk")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Soul"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Soul" groups=["soul"]]
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_0ssf3")
 texture = ExtResource("3_iebjy")
 
-[node name="Area2D" type="Area2D" parent="Soul"]
+[node name="Area2D" type="Area2D" parent="Soul" groups=["soul"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Soul/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Soul/Area2D" groups=["soul"]]
 shape = SubResource("CircleShape2D_g1pwm")
-disabled = true
 
-[connection signal="body_entered" from="Soul/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Soul/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Soul/Area2D" to="." method="_on_area_2d_area_exited"]
