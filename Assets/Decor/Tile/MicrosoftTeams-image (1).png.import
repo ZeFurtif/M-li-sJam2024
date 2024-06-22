@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbxut663y1gnf"
-path="res://.godot/imported/Additional Sky.png-20f6ccd4c7d1a0ce9fe5cab6fd3d00e2.ctex"
+uid="uid://cyrajfnsd6jex"
+path="res://.godot/imported/MicrosoftTeams-image (1).png-b86d79d08b3267a9f4feb70c4e87405b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Decor/Additional Sky.png"
-dest_files=["res://.godot/imported/Additional Sky.png-20f6ccd4c7d1a0ce9fe5cab6fd3d00e2.ctex"]
+source_file="res://Assets/Decor/Tile/MicrosoftTeams-image (1).png"
+dest_files=["res://.godot/imported/MicrosoftTeams-image (1).png-b86d79d08b3267a9f4feb70c4e87405b.ctex"]
 
 [params]
 
