@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://b30af15kixsws"]
+
+[ext_resource type="PackedScene" uid="uid://dukhtm8jquwvs" path="res://Prefabs/player.tscn" id="1_5lwia"]
+[ext_resource type="PackedScene" uid="uid://biplt0g2bgill" path="res://Prefabs/enemy.tscn" id="2_3br0c"]
+[ext_resource type="PackedScene" uid="uid://e2wj2852x8ad" path="res://Prefabs/enemy_souls.tscn" id="3_g3bi3"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ptp8n"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dok0u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6805"]
+size = Vector2(60.5, 20)
+
+[node name="GDU_TestUnit" type="Node2D"]
+
+[node name="World_Col" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World_Col"]
+shape = SubResource("WorldBoundaryShape2D_ptp8n")
+
+[node name="Player" parent="." instance=ExtResource("1_5lwia")]
+position = Vector2(2, -52)
+
+[node name="Enemy" parent="." instance=ExtResource("2_3br0c")]
+position = Vector2(103, 0)
+
+[node name="EnemySouls" parent="Enemy" instance=ExtResource("3_g3bi3")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+light_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+material = SubResource("CanvasItemMaterial_dok0u")
+position = Vector2(331, -10)
+shape = SubResource("RectangleShape2D_f6805")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+material = SubResource("CanvasItemMaterial_dok0u")
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_f6805")

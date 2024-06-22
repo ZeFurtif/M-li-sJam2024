@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://e2wj2852x8ad"]
+
+[ext_resource type="Script" path="res://Scripts/Globals/enemy_souls.gd" id="1_tehnv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i4gix"]
+
+[node name="EnemySouls" type="Node2D"]
+script = ExtResource("1_tehnv")
+
+[node name="Anchors" type="Node2D" parent="."]
+position = Vector2(0, -15)
+
+[node name="fire_souls_01" type="Area2D" parent="Anchors"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchors/fire_souls_01"]
+position = Vector2(-50, 0)
+shape = SubResource("CircleShape2D_i4gix")
+
+[node name="fire_souls_02" type="Area2D" parent="Anchors"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchors/fire_souls_02"]
+position = Vector2(50, 0)
+shape = SubResource("CircleShape2D_i4gix")
+
+[node name="fire_souls_03" type="Area2D" parent="Anchors"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchors/fire_souls_03"]
+position = Vector2(0, 45)
+shape = SubResource("CircleShape2D_i4gix")
+
+[node name="fire_souls_04" type="Area2D" parent="Anchors"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchors/fire_souls_04"]
+position = Vector2(0, -50)
+shape = SubResource("CircleShape2D_i4gix")
+
+[connection signal="body_entered" from="Anchors/fire_souls_01" to="." method="_on_fire_souls_01_body_entered"]
