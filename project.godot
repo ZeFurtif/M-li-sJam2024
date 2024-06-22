@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerGlobals="*res://Scripts/Globals/PlayerGlobals.gd"
+EnemyGlobals="*res://Scripts/Globals/EnemyGlobals.gd"
+
+[dotnet]
+
+project/assembly_name="Body&Soul"
 
 [input]
 

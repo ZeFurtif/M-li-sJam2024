@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://biplt0g2bgill"]
 
-[ext_resource type="Script" path="res://Scripts/Globals/enemy.gd" id="1_xb811"]
+[ext_resource type="Script" path="res://Scripts/Enemy/enemy.gd" id="1_emlbp"]
 [ext_resource type="Texture2D" uid="uid://ccdw0thede5t6" path="res://Assets/Enemy/enemy_04.png" id="2_eyoaw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pr1sg"]
@@ -32,7 +32,7 @@ animations = [{
 size = Vector2(19, 46)
 
 [node name="Enemy" type="Node2D"]
-script = ExtResource("1_xb811")
+script = ExtResource("1_emlbp")
 
 [node name="Enemy_Body" type="CharacterBody2D" parent="."]
 
@@ -42,14 +42,18 @@ scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_g6e0q")
 animation = &"walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Body"]
-position = Vector2(-0.5, -23)
-shape = SubResource("RectangleShape2D_3xywy")
-
 [node name="RayCast2DLeft" type="RayCast2D" parent="Enemy_Body"]
 position = Vector2(0, -10)
 target_position = Vector2(-20, 0)
+collision_mask = 4
 
 [node name="RayCast2DRight" type="RayCast2D" parent="Enemy_Body"]
 position = Vector2(0, -10)
 target_position = Vector2(20, 0)
+collision_mask = 2
+
+[node name="Area2D" type="Area2D" parent="Enemy_Body"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Body/Area2D"]
+position = Vector2(-0.5, -23)
+shape = SubResource("RectangleShape2D_3xywy")
