@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://b30af15kixsws"]
+
+[ext_resource type="PackedScene" uid="uid://dukhtm8jquwvs" path="res://Prefabs/player.tscn" id="1_5lwia"]
+[ext_resource type="PackedScene" uid="uid://biplt0g2bgill" path="res://Prefabs/enemy.tscn" id="2_3br0c"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ptp8n"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dok0u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6805"]
+
+[node name="GDU_TestUnit" type="Node2D"]
+
+[node name="World_Col" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World_Col"]
+shape = SubResource("WorldBoundaryShape2D_ptp8n")
+
+[node name="Player" parent="." instance=ExtResource("1_5lwia")]
+position = Vector2(2, -52)
+
+[node name="Enemy" parent="." instance=ExtResource("2_3br0c")]
+position = Vector2(49, -16)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+material = SubResource("CanvasItemMaterial_dok0u")
+position = Vector2(106, -10)
+shape = SubResource("RectangleShape2D_f6805")
