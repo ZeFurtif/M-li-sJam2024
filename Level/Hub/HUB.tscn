@@ -18,14 +18,7 @@ position = Vector2(290, 172)
 position = Vector2(447, 198)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_siwck")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(200, 0)
-shape = SubResource("WorldBoundaryShape2D_siwck")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-198, 0)
+position = Vector2(-144, 0)
 shape = SubResource("WorldBoundaryShape2D_siwck")
 
 [node name="Background" type="ParallaxBackground" parent="."]

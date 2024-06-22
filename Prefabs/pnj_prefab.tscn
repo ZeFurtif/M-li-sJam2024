@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddr8mgieimscq"]
+
+[ext_resource type="Script" path="res://Scripts/player_controller.gd" id="1_1ww14"]
+[ext_resource type="Texture2D" uid="uid://ctjvevb5vol7s" path="res://Anim/Test/_Idle.png" id="1_3hdsi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6jgx4"]
+radius = 15.0
+height = 54.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_74ell"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(278, 129)
+scale = Vector2(2.72218, 2.87069)
+script = ExtResource("1_1ww14")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-24, 50)
+texture = ExtResource("1_3hdsi")
+hframes = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-28, 69)
+shape = SubResource("CapsuleShape2D_6jgx4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(4, 98)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_74ell")

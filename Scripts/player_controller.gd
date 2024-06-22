@@ -2,9 +2,14 @@ extends Node2D
 
 var PLAYING_BODY = true
 
+
 const BODY_SPEED = 120
 const SOUL_SPEED = 100
 const JUMP_VELOCITY = -250
+
+@onready var ap = $Body/AnimationPlayer
+@onready var sprite = $Sprite2D
+
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -33,12 +38,13 @@ func handle_body_movement(delta):
 	if direction:
 		$Body.velocity.x = direction * BODY_SPEED
 		if $Body.velocity.x < 0:
-			$Body/AnimatedSprite2D.flip_h = true
+			$Body/Sprite2D.flip_h = true
 		if $Body.velocity.x > 0:
-			$Body/AnimatedSprite2D.flip_h = false
+			$Body/Sprite2D.flip_h = false
 	else:
 		$Body.velocity.x = move_toward($Body.velocity.x, 0, BODY_SPEED)
 		
+	update_animation(direction)
 	$Body.move_and_slide()
 
 func handle_soul_movement(delta):
@@ -77,3 +83,17 @@ func handle_soul_follow(delta):
 #		for node in to_check:
 #			if node.is_in_group("Hit"):
 #				node.
+func update_animation(horizontal_direction):
+	if $Body.is_on_floor():
+		if $Body.velocity.x == 0:
+			ap.play("Idle")
+		else:
+			ap.play("Run")
+	else:
+		if $Body.velocity.y < 0:
+			ap.play("Jump")
+		elif $Body.velocity.y > 0:
+			ap.play("Fall")
+		
+ 
+
