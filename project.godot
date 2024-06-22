@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerGlobals="*res://Scripts/Globals/PlayerGlobals.gd"
+MusicAndAmbiance="*res://Scripts/Globals/MusicAndAmbiance.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/linepath2d/plugin.cfg")
 
 [input]
 

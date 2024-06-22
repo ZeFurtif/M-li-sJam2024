@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://sn3ih54n175b"]
+
+[ext_resource type="Texture2D" uid="uid://c0d5qs5h7q0vr" path="res://Assets/background01.png" id="1_uqcwk"]
+[ext_resource type="Script" path="res://Scripts/Interactibles.gd" id="3_sst7a"]
+[ext_resource type="Script" path="res://Scripts/ShapeInteractibles.gd" id="4_cnxg2"]
+[ext_resource type="PackedScene" uid="uid://dukhtm8jquwvs" path="res://Prefabs/player.tscn" id="4_pbl4m"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qqxda"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p20cg"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7myem"]
+
+[node name="EvaUnitTest" type="Node2D"]
+
+[node name="Background01" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(-102, -40)
+texture = ExtResource("1_uqcwk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2, -29)
+shape = SubResource("WorldBoundaryShape2D_qqxda")
+
+[node name="INTERACTIBLE" type="Node2D" parent="."]
+script = ExtResource("3_sst7a")
+
+[node name="Area2D" type="Area2D" parent="INTERACTIBLE" groups=["interactible"]]
+disable_mode = 1
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="INTERACTIBLE/Area2D"]
+position = Vector2(126, -57)
+shape = SubResource("CircleShape2D_p20cg")
+
+[node name="SHAPE" type="Node2D" parent="."]
+script = ExtResource("4_cnxg2")
+
+[node name="Area2D" type="Area2D" parent="SHAPE"]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SHAPE/Area2D"]
+position = Vector2(-43, -77)
+shape = SubResource("CircleShape2D_7myem")
+
+[node name="INTERACTIBLE2" type="Node2D" parent="."]
+script = ExtResource("3_sst7a")
+
+[node name="Area2D" type="Area2D" parent="INTERACTIBLE2" groups=["interactible"]]
+disable_mode = 1
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="INTERACTIBLE2/Area2D"]
+position = Vector2(82, -105)
+shape = SubResource("CircleShape2D_p20cg")
+
+[node name="Player" parent="." instance=ExtResource("4_pbl4m")]
+position = Vector2(3, -83)
+
+[connection signal="area_entered" from="INTERACTIBLE/Area2D" to="INTERACTIBLE" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="INTERACTIBLE/Area2D" to="INTERACTIBLE" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="SHAPE/Area2D" to="SHAPE" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="SHAPE/Area2D" to="SHAPE" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="INTERACTIBLE2/Area2D" to="INTERACTIBLE2" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="INTERACTIBLE2/Area2D" to="INTERACTIBLE2" method="_on_area_2d_area_exited"]

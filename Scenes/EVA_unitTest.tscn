@@ -15,7 +15,8 @@ radius = 15.0
 [node name="EvaUnitTest" type="Node2D"]
 
 [node name="Background01" type="Sprite2D" parent="."]
-position = Vector2(-98, 16)
+z_index = -5
+position = Vector2(-102, -40)
 texture = ExtResource("1_uqcwk")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cyg2g6h335o3d"
+path="res://.godot/imported/Socapex - Dark Ambiance - Mastered.mp3-b0853323cd7816a40155c160965cbf29.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Ambient/Socapex - Dark Ambiance - Mastered.mp3"
+dest_files=["res://.godot/imported/Socapex - Dark Ambiance - Mastered.mp3-b0853323cd7816a40155c160965cbf29.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

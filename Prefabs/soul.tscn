@@ -1,13 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://d3xomj5if6uas"]
+[gd_scene load_steps=15 format=3 uid="uid://d3xomj5if6uas"]
 
 [ext_resource type="Texture2D" uid="uid://bwh34q67mwb4i" path="res://Assets/Soul/faded_sphere.png" id="2_thtlu"]
-
-[sub_resource type="GDScript" id="GDScript_745ms"]
-script/source = "extends Node
-
-func flip(bol):
-	$AnimatedSprite2D.flip_h = bol
-"
+[ext_resource type="Shader" path="res://Shaders/white.gdshader" id="3_j2vd0"]
+[ext_resource type="Texture2D" uid="uid://bbo158vf3yaux" path="res://Assets/UI/arrow.svg" id="4_wk6lf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1pwm"]
 
@@ -50,7 +45,7 @@ background_mode = 3
 ambient_light_source = 2
 ambient_light_color = Color(0.668174, 0.206816, 1, 1)
 glow_enabled = true
-glow_intensity = 0.74
+glow_intensity = 1.39
 glow_strength = 0.61
 glow_bloom = 0.66
 glow_blend_mode = 0
@@ -58,11 +53,13 @@ glow_hdr_threshold = 2.0
 glow_hdr_luminance_cap = 2.0
 glow_map_strength = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0qfb1"]
+shader = ExtResource("3_j2vd0")
+
 [node name="Soul" type="CharacterBody2D" groups=["soul"]]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 0
-script = SubResource("GDScript_745ms")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["soul"]]
 shape = SubResource("CircleShape2D_g1pwm")
@@ -82,3 +79,10 @@ shape = SubResource("CircleShape2D_g1pwm")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_d7fow")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0qfb1")
+position = Vector2(-8.47033e-22, -24)
+rotation = 3.14159
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("4_wk6lf")

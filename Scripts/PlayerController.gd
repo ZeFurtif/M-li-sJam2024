@@ -7,11 +7,11 @@ func _ready():
 	soul_target = $Body.position + Vector2(0, -20)
 
 func _process(delta):
-	print(PlayerGlobals.SOULS)
 	if Input.is_action_just_pressed("switch"):
 		if PlayerGlobals.PLAYING_BODY:
 			PlayerGlobals.PLAYING_BODY = false
 			PlayerGlobals.PLAYING_SOUL = 0
+			reset_soul_arrow()
 		else:
 			if PlayerGlobals.PLAYING_SOUL >= PlayerGlobals.SOULS_AMOUNT-1:
 				PlayerGlobals.PLAYING_BODY = true
@@ -30,6 +30,7 @@ func _process(delta):
 		handle_body_follow(delta)
 		set_soul_vignette(1)
 	handle_soul_follow(delta)
+	show_soul_arrow()
 
 func handle_body_movement(delta):
 	var body = find_child("Body")
@@ -79,7 +80,6 @@ func handle_soul_movement(delta):
 						soul.velocity.x = move_toward(soul.velocity.x, 0, PlayerGlobals.SOUL_SPEED)
 						soul.velocity.y = move_toward(soul.velocity.y, 0, PlayerGlobals.SOUL_SPEED)
 					soul.move_and_slide()
-				return
 			current_idx += 1
 
 func handle_soul_follow(delta):
@@ -98,10 +98,10 @@ func handle_soul_follow(delta):
 					var rdm = sin(Time.get_ticks_msec()*0.0005*(current_idx+1))*10
 					target.y += rdm
 					if not $Body/AnimatedSprite2D.flip_h:
-						target.x += -50
+						target.x += -20
 						target.y += -7*(current_idx-1)
 					else:
-						target.x += 50
+						target.x += 20
 						target.y += 7*(current_idx-1)
 					soul.velocity.x = (target.x - soul.position.x) * delta * PlayerGlobals.SOUL_SPEED
 					soul.velocity.y = (target.y - soul.position.y) * delta * PlayerGlobals.SOUL_SPEED
@@ -129,6 +129,36 @@ func kill_soul():
 				PlayerGlobals.SOULS_AMOUNT -= 1
 				PlayerGlobals.SOULS.pop()
 				return
+
+#func handle_soul_beam():
+#	var souls = get_children()
+#	var current_idx = 0
+#	for soul in souls:
+#		if soul.is_in_group("soul"):
+#			var path = soul.find_child("LinePath2D")
+#			path._curve.set_point_position(0, Vector2(0,0))
+#			path._curve.set_point_position(1, $Body.position - soul.position)
+#			var new_out = ($Body.position-soul.position).normalized()
+#			var new_in = (soul.position-$Body.position).normalized()
+#			path._curve.set_point_out(0, new_out * 10)
+#			path._curve.set_point_in(1, new_in * 10)
+#			current_idx += 1
+
+func show_soul_arrow():
+	if PlayerGlobals.PLAYING_BODY:
+		return reset_soul_arrow()
+	var cur_idx = 0
+	var souls = get_children()
+	for soul in souls:
+		if soul.is_in_group("soul"):
+			soul.find_child("Arrow").set("visible", PlayerGlobals.PLAYING_SOUL == cur_idx)
+			cur_idx += 1
+
+func reset_soul_arrow():
+	var souls = get_children()
+	for soul in souls:
+		if soul.is_in_group("soul"):
+			soul.find_child("Arrow").set("visible", false)
 
 func set_soul_vignette(alpha):
 	var cur_alpha = $Body/Camera2D/CanvasLayer/SoulVignette.material.get("shader_parameter/alpha")
