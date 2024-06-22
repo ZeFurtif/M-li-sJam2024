@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://d3xomj5if6uas"]
+
+[ext_resource type="Texture2D" uid="uid://bwh34q67mwb4i" path="res://Assets/Soul/faded_sphere.png" id="2_thtlu"]
+
+[sub_resource type="GDScript" id="GDScript_745ms"]
+script/source = "extends Node
+
+func flip(bol):
+	$AnimatedSprite2D.flip_h = bol
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g1pwm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bfonk"]
+
+[sub_resource type="Curve" id="Curve_jk706"]
+_data = [Vector2(0, 0.406593), 0.0, 8.03297, 0, 0, Vector2(0.517442, 1), -0.795836, -0.795836, 0, 0, Vector2(1, 0), -12.6007, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_hdcxd"]
+curve = SubResource("Curve_jk706")
+
+[sub_resource type="Gradient" id="Gradient_2dpyk"]
+colors = PackedColorArray(0, 0.908751, 0.947166, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s2mqe"]
+gradient = SubResource("Gradient_2dpyk")
+
+[sub_resource type="Curve" id="Curve_e7gbi"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.444732, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dl0nr"]
+curve = SubResource("Curve_e7gbi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0ssf3"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(5, 5, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, -50, 0)
+scale_min = 0.01
+scale_max = 0.01
+scale_curve = SubResource("CurveTexture_dl0nr")
+color_ramp = SubResource("GradientTexture1D_s2mqe")
+alpha_curve = SubResource("CurveTexture_hdcxd")
+
+[sub_resource type="Environment" id="Environment_d7fow"]
+background_mode = 3
+ambient_light_source = 2
+ambient_light_color = Color(0.668174, 0.206816, 1, 1)
+glow_enabled = true
+glow_intensity = 0.74
+glow_strength = 0.61
+glow_bloom = 0.66
+glow_blend_mode = 0
+glow_hdr_threshold = 2.0
+glow_hdr_luminance_cap = 2.0
+glow_map_strength = 1.0
+
+[node name="Soul" type="CharacterBody2D" groups=["soul"]]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
+script = SubResource("GDScript_745ms")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["soul"]]
+shape = SubResource("CircleShape2D_g1pwm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["soul"]]
+sprite_frames = SubResource("SpriteFrames_bfonk")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." groups=["soul"]]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_0ssf3")
+texture = ExtResource("2_thtlu")
+
+[node name="Area2D" type="Area2D" parent="." groups=["soul"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["soul"]]
+shape = SubResource("CircleShape2D_g1pwm")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d7fow")

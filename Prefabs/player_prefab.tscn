@@ -1,8 +1,90 @@
-[gd_scene load_steps=9 format=3 uid="uid://0t8rrv41blrx"]
+[gd_scene load_steps=6 format=3 uid="uid://0t8rrv41blrx"]
 
-[ext_resource type="Script" path="res://Scripts/player_controller.gd" id="1_f6xum"]
 [ext_resource type="Texture2D" uid="uid://ib6ypuh6lbe8" path="res://Assets/Body/brawlbot_trans.png" id="2_lkpes"]
-[ext_resource type="Texture2D" uid="uid://bwh34q67mwb4i" path="res://Assets/Soul/faded_sphere.png" id="3_iebjy"]
+[ext_resource type="PackedScene" uid="uid://d3xomj5if6uas" path="res://Prefabs/soul.tscn" id="3_vvphn"]
+
+[sub_resource type="GDScript" id="GDScript_v2aem"]
+script/source = "extends Node2D
+class_name Player
+
+var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
+
+func _ready():
+	pass
+
+func _process(delta):
+	if Input.is_action_just_pressed(\"switch\"):
+		Global.PLAYING_BODY = !Global.PLAYING_BODY
+	
+	if Global.PLAYING_BODY:
+		handle_body_movement(delta) # INPUTS -> BODY MOVEMENT
+		handle_soul_follow(delta) # SOUL FOLLOWS BODY
+	else:
+		handle_soul_movement(delta) # INPUTS -> SOUL MOVEMENT
+		
+func handle_body_movement(delta):
+	if not $Body.is_on_floor():
+		$Body.velocity.y += gravity * delta
+	
+	if Input.is_action_pressed(\"jump\") and $Body.is_on_floor():
+		$Body.velocity.y = Global.JUMP_VELOCITY
+
+	var direction = Input.get_axis(\"move_left\", \"move_right\")
+	if direction:
+		$Body.velocity.x = direction * Global.BODY_SPEED
+		if $Body.velocity.x < 0:
+			$Body/AnimatedSprite2D.flip_h = true
+		if $Body.velocity.x > 0:
+			$Body/AnimatedSprite2D.flip_h = false
+	else:
+		$Body.velocity.x = move_toward($Body.velocity.x, 0, Global.BODY_SPEED)
+		
+	$Body.move_and_slide()
+
+func handle_soul_movement(delta):
+	if (Global.BOUND):
+		go_to_binding_location(delta)
+	
+	var direction = Input.get_vector(\"move_left\", \"move_right\",\"move_up\", \"move_down\")
+	direction = direction.normalized()
+	if direction:
+		$Soul.velocity = direction * Global.SOUL_SPEED
+		if $Soul.velocity.x < 0:
+			$Soul/AnimatedSprite2D.flip_h = true
+		if $Soul.velocity.x > 0:
+			$Soul/AnimatedSprite2D.flip_h = false
+	else:
+		$Soul.velocity.x = move_toward($Soul.velocity.x, 0, Global.SOUL_SPEED)
+		$Soul.velocity.y = move_toward($Soul.velocity.y, 0, Global.SOUL_SPEED)
+			
+	$Soul.move_and_slide()
+
+func handle_soul_follow(delta):
+	var current_idx = 0
+	if (Global.BOUND):
+		current_idx += 1
+		go_to_binding_location(delta)
+	else:
+		var souls = self.get_children()
+		for i in range(current_idx, self.get_child_count()):
+			if souls[i].is_in_group(\"soul\"):
+				var target = $Body.position + Vector2(0,-20-7*i)
+				if not $Body/AnimatedSprite2D.flip_h:
+					target.x -= -30+30*i
+				else:
+					target.x += -30+30*i
+				souls[i].velocity.x = (target.x - souls[i].position.x) * delta * Global.SOUL_SPEED
+				souls[i].velocity.y = (target.y - souls[i].position.y) * delta * Global.SOUL_SPEED
+				if souls[i].velocity.x < 0:
+					souls[i].flip(true)
+				if souls[i].velocity.x > 0:
+					souls[i].flip(false)
+				souls[i].move_and_slide()
+
+func go_to_binding_location(delta):
+	$Soul.velocity.x = (Global.BINDING_LOCATION.x - $Soul.position.x) * delta * Global.SOUL_SPEED
+	$Soul.velocity.y = (Global.BINDING_LOCATION.y - $Soul.position.y) * delta * Global.SOUL_SPEED
+"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mhv57"]
 
@@ -17,24 +99,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g1pwm"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bfonk"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0ssf3"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(5, 5, 1)
-emission_shape = 1
-emission_sphere_radius = 1.0
-gravity = Vector3(0, -50, 0)
-scale_min = 0.01
-scale_max = 0.01
-
 [node name="Player" type="Node2D" groups=["player"]]
-script = ExtResource("1_f6xum")
+script = SubResource("GDScript_v2aem")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="Body" type="CharacterBody2D" parent="." groups=["body"]]
@@ -48,25 +117,4 @@ sprite_frames = SubResource("SpriteFrames_jk6qy")
 
 [node name="Node2D" type="Node2D" parent="Body"]
 
-[node name="Soul" type="CharacterBody2D" parent="." groups=["soul"]]
-position = Vector2(-26, -24)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Soul"]
-shape = SubResource("CircleShape2D_g1pwm")
-disabled = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Soul"]
-sprite_frames = SubResource("SpriteFrames_bfonk")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Soul"]
-amount = 50
-process_material = SubResource("ParticleProcessMaterial_0ssf3")
-texture = ExtResource("3_iebjy")
-
-[node name="Area2D" type="Area2D" parent="Soul"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Soul/Area2D"]
-shape = SubResource("CircleShape2D_g1pwm")
-disabled = true
-
-[connection signal="body_entered" from="Soul/Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="Soul" parent="." instance=ExtResource("3_vvphn")]
