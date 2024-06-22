@@ -33,11 +33,12 @@ scale_max = 0.01
 [node name="Player" type="Node2D"]
 script = ExtResource("1_f6xum")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Body" type="CharacterBody2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Body"]
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
-
-[node name="Body" type="CharacterBody2D" parent="."]
+position_smoothing_speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
 shape = SubResource("CapsuleShape2D_mhv57")
@@ -45,8 +46,6 @@ shape = SubResource("CapsuleShape2D_mhv57")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body"]
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_jk6qy")
-
-[node name="Node2D" type="Node2D" parent="Body"]
 
 [node name="Soul" type="CharacterBody2D" parent="."]
 position = Vector2(-26, -24)

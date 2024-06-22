@@ -70,3 +70,10 @@ func handle_soul_follow(delta):
 		$Soul/AnimatedSprite2D.flip_h = false
 
 	$Soul.move_and_slide()
+
+#func handle_attack(delta):
+#	if Input.is_action_just_pressed("interaction"):
+#		var to_check = $Body/Area2D.get_overlapping_bodies()
+#		for node in to_check:
+#			if node.is_in_group("Hit"):
+#				node.
