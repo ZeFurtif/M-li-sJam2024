@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dukhtm8jquwvs"]
+[gd_scene load_steps=8 format=3 uid="uid://dukhtm8jquwvs"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_5awsi"]
+[ext_resource type="Shader" path="res://Shaders/vignette.gdshader" id="2_euhcv"]
 [ext_resource type="Texture2D" uid="uid://ib6ypuh6lbe8" path="res://Assets/Body/brawlbot_trans.png" id="2_lx07d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0gbl3"]
@@ -16,11 +17,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8xt4"]
+shader = ExtResource("2_euhcv")
+shader_parameter/color = Vector4(0, 50, 300, 0)
+shader_parameter/alpha = 0.0
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hcsup"]
+shader = ExtResource("2_euhcv")
+shader_parameter/color = null
+shader_parameter/alpha = 0.5
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 1.0
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_5awsi")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
 
 [node name="Body" type="CharacterBody2D" parent="."]
 
@@ -30,3 +42,36 @@ shape = SubResource("CapsuleShape2D_0gbl3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body"]
 scale = Vector2(0.02, 0.02)
 sprite_frames = SubResource("SpriteFrames_em1l4")
+
+[node name="Camera2D" type="Camera2D" parent="Body"]
+scale = Vector2(0.819292, 0.0437813)
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Body/Camera2D"]
+
+[node name="SoulVignette" type="ColorRect" parent="Body/Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_g8xt4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Vignette" type="ColorRect" parent="Body/Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_hcsup")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

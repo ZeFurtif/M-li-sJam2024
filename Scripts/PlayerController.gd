@@ -13,8 +13,10 @@ func _process(delta):
 	if PlayerGlobals.PLAYING_BODY:
 		handle_body_movement(delta)
 		handle_soul_follow(delta)
+		set_soul_vignette(0)
 	else:
 		handle_soul_movement(delta)
+		set_soul_vignette(1)
 
 func handle_body_movement(delta):
 	var body = find_child("Body")
@@ -68,9 +70,9 @@ func handle_soul_follow(delta):
 			else:
 				var target = $Body.position + Vector2(0,-20-7*current_idx)
 				if not $Body/AnimatedSprite2D.flip_h:
-					target.x -= -30+30*current_idx
-				else:
 					target.x += -30+30*current_idx
+				else:
+					target.x -= -30+30*current_idx
 				soul.velocity.x = (target.x - soul.position.x) * delta * PlayerGlobals.SOUL_SPEED
 				soul.velocity.y = (target.y - soul.position.y) * delta * PlayerGlobals.SOUL_SPEED
 				if soul.velocity.x < 0:
@@ -95,3 +97,7 @@ func kill_soul():
 				soul.queue_free()
 				PlayerGlobals.SOULS_AMOUNT -= 1
 				return
+
+func set_soul_vignette(alpha):
+	var cur_alpha = $Body/Camera2D/CanvasLayer/SoulVignette.material.get("shader_parameter/alpha")
+	$Body/Camera2D/CanvasLayer/SoulVignette.material.set("shader_parameter/alpha",move_toward(cur_alpha, alpha, 0.1))
