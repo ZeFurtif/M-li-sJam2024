@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://sn3ih54n175b"]
 
 [ext_resource type="Texture2D" uid="uid://c0d5qs5h7q0vr" path="res://Assets/background01.png" id="1_uqcwk"]
-[ext_resource type="Script" path="res://Scripts/Interactibles.gd" id="3_sst7a"]
-[ext_resource type="Script" path="res://Scripts/ShapeInteractibles.gd" id="4_cnxg2"]
+[ext_resource type="Script" path="res://Scripts/interactible.gd" id="3_sst7a"]
+[ext_resource type="Script" path="res://Scripts/shape.gd" id="4_cnxg2"]
 [ext_resource type="PackedScene" uid="uid://dukhtm8jquwvs" path="res://Prefabs/player.tscn" id="4_pbl4m"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qqxda"]

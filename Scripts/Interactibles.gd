@@ -7,8 +7,8 @@ var ENTERED = false
 var LAST_ACTIVATION_TIME = 0
 
 func _process(delta):
-	if ENTERED and !Global.PLAYING_BODY:
-		if Input.is_action_just_pressed("interaction") and Global.CURRENT_SHAPE == SHAPE_HOLE:
+	if ENTERED and !PlayerGlobals.PLAYING_BODY:
+		if Input.is_action_just_pressed("interaction") and SHAPE_HOLE in PlayerGlobals.SOULS:
 			activate()
 			LAST_ACTIVATION_TIME = Time.get_ticks_msec()
 	if (Time.get_ticks_msec() - LAST_ACTIVATION_TIME) >= 5000 and ACTIVE:
@@ -16,13 +16,13 @@ func _process(delta):
 
 func activate():
 	ACTIVE = true
-	Global.BINDING_LOCATION = $Area2D/CollisionShape2D.global_position + Vector2(0,70)
-	Global.BOUND = true
+	PlayerGlobals.BINDING_LOCATION = $Area2D/CollisionShape2D.global_position + Vector2(0,70)
+	PlayerGlobals.BOUND = true
 	print("activate")
 
 func deactivate():
 	ACTIVE = false
-	Global.BOUND = false
+	PlayerGlobals.BOUND = false
 	print("deactivate")
 
 func _on_area_2d_area_entered(area):

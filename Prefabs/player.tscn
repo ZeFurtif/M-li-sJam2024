@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dukhtm8jquwvs"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_5awsi"]
+[ext_resource type="Texture2D" uid="uid://ib6ypuh6lbe8" path="res://Assets/Body/brawlbot_trans.png" id="2_lx07d"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0gbl3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_em1l4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lx07d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_5awsi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="Body" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+shape = SubResource("CapsuleShape2D_0gbl3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body"]
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_em1l4")
