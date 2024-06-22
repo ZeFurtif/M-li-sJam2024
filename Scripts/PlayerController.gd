@@ -7,19 +7,15 @@ func _ready():
 	soul_target = $Body.position + Vector2(0, -20)
 
 func _process(delta):
-	var switch = Input.get_axis("switch_up", "switch_down")
-	if PlayerGlobals.SOULS_AMOUNT > 0 and (Input.is_action_just_pressed("switch_up") or Input.is_action_just_pressed("switch_down")):
-		if PlayerGlobals.PLAYING_BODY:
-			PlayerGlobals.PLAYING_BODY = false
-			reset_soul_arrow()
-		else:
-			PlayerGlobals.PLAYING_SOUL += int(switch)
-			if PlayerGlobals.PLAYING_SOUL < 0:
-				PlayerGlobals.PLAYING_BODY = true
-				PlayerGlobals.PLAYING_SOUL -= int(switch)
-			if PlayerGlobals.PLAYING_SOUL >= PlayerGlobals.SOULS_AMOUNT:
-				PlayerGlobals.PLAYING_BODY = true
-				PlayerGlobals.PLAYING_SOUL -= int(switch)
+	
+	if PlayerGlobals.SOULS_AMOUNT > 0 and Input.is_action_just_pressed("switch"):
+		PlayerGlobals.PLAYING_BODY = !PlayerGlobals.PLAYING_BODY
+		reset_soul_arrow()
+
+	if !PlayerGlobals.PLAYING_BODY and (Input.is_action_just_pressed("switch_down") or Input.is_action_just_pressed("switch_up")):
+		var switch = Input.get_axis("switch_up", "switch_down")
+		PlayerGlobals.PLAYING_SOUL += int(switch)
+		PlayerGlobals.PLAYING_SOUL = (PlayerGlobals.PLAYING_SOUL+ PlayerGlobals.SOULS_AMOUNT)%PlayerGlobals.SOULS_AMOUNT
 			
 	if Input.is_action_just_pressed("spawn_soul"):
 		spawn_soul()		
@@ -93,7 +89,7 @@ func handle_soul_follow(delta):
 				if PlayerGlobals.PLAYING_BODY or current_idx != PlayerGlobals.PLAYING_SOUL:
 					soul_target.x = move_toward(soul_target.x, $Body.position.x, 0.7)
 					soul_target.y = move_toward(soul_target.y, $Body.position.y, 0.7)
-					var target = soul_target + Vector2(-25*(current_idx-1),-32)
+					var target = soul_target + Vector2(-25*(current_idx-1),-30)
 					var rdm = sin(Time.get_ticks_msec()*0.0005*(current_idx+1))*10
 					target.y += rdm
 					if not $Body/AnimatedSprite2D.flip_h:
