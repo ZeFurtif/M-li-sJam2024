@@ -2,9 +2,13 @@ extends Node
 
 var soul_target = Vector2.ZERO
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var last_damage = 0
+var shake_speed = 2
+var shake_amplitude = 0
 
 func _ready():
 	soul_target = $Body.position + Vector2(0, -20)
+	PlayerGlobals._event_damage_received.connect(_on_health_change)
 
 func _process(delta):
 	
@@ -21,6 +25,7 @@ func _process(delta):
 		spawn_soul()		
 	if Input.is_action_just_pressed("kill_soul"):
 		kill_soul()
+		PlayerGlobals.take_damage(5)
 		
 	if PlayerGlobals.PLAYING_BODY:
 		handle_body_movement(delta)
@@ -32,6 +37,11 @@ func _process(delta):
 	handle_soul_follow(delta)
 	handle_soul_bound(delta)
 	show_soul_arrow()
+	shake_cam()
+	shake_amplitude = move_toward(shake_amplitude, 0, 0.1)
+
+	if Time.get_ticks_msec() - last_damage > 500:
+		set_chromatic_aberration(1,0.7)
 
 func handle_body_movement(delta):
 	var body = find_child("Body")
@@ -132,8 +142,14 @@ func kill_soul():
 			if soul.is_in_group("soul"):
 				soul.queue_free()
 				PlayerGlobals.SOULS_AMOUNT -= 1
-				PlayerGlobals.SOULS.pop()
+				PlayerGlobals.SOULS.pop_front()
 				return
+
+func _on_health_change(damage):
+	last_damage = Time.get_ticks_msec()
+	if damage > 0:
+		set_chromatic_aberration(10, 0.01)
+		shake_amplitude = 20
 
 #func handle_soul_beam():
 #	var souls = get_children()
@@ -168,3 +184,22 @@ func reset_soul_arrow():
 func set_soul_vignette(alpha):
 	var cur_alpha = $Body/Camera2D/CanvasLayer/SoulVignette.material.get("shader_parameter/alpha")
 	$Body/Camera2D/CanvasLayer/SoulVignette.material.set("shader_parameter/alpha",move_toward(cur_alpha, alpha, 0.1))
+
+func set_chromatic_aberration(strenght, fade):
+	var cur_r = $Body/Camera2D/CanvasLayer/ChromaticAberation.material.get("shader_parameter/r_displacement")
+	var cur_b = $Body/Camera2D/CanvasLayer/ChromaticAberation.material.get("shader_parameter/b_displacement")
+	var cur_fade = $Body/Camera2D/CanvasLayer/ChromaticAberation.material.get("shader_parameter/fade")
+	var new_r = Vector2(strenght*3,0)
+	var new_b = Vector2(strenght*-3,0)
+	var new_fade = move_toward(cur_fade, fade, 10)
+	new_r.x = move_toward(cur_r.x, new_r.x, 10)
+	new_b.x = move_toward(cur_b.x, new_b.x, 10)
+	$Body/Camera2D/CanvasLayer/ChromaticAberation.material.set("shader_parameter/r_displacement",new_r)
+	$Body/Camera2D/CanvasLayer/ChromaticAberation.material.set("shader_parameter/b_displacement",new_b)
+	$Body/Camera2D/CanvasLayer/ChromaticAberation.material.set("shader_parameter/fade",new_fade)
+
+func shake_cam():
+	if shake_amplitude == 0:
+		$Body/Camera2D.position = Vector2(0,0)
+		return
+	$Body/Camera2D.position = Vector2(sin(Time.get_ticks_msec()+50*shake_speed),sin(Time.get_ticks_msec()*shake_speed)) * shake_amplitude

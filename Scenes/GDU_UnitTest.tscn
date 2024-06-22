@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b30af15kixsws"]
+[gd_scene load_steps=7 format=3 uid="uid://dfgptuaawmais"]
 
 [ext_resource type="PackedScene" uid="uid://dukhtm8jquwvs" path="res://Prefabs/player.tscn" id="1_5lwia"]
-[ext_resource type="PackedScene" uid="uid://biplt0g2bgill" path="res://Prefabs/enemy.tscn" id="2_3br0c"]
-[ext_resource type="PackedScene" uid="uid://e2wj2852x8ad" path="res://Prefabs/enemy_souls.tscn" id="3_g3bi3"]
+[ext_resource type="PackedScene" path="res://Prefabs/enemy.tscn" id="2_3br0c"]
+[ext_resource type="PackedScene" path="res://Prefabs/enemy_souls.tscn" id="3_g3bi3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ptp8n"]
 

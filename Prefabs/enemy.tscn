@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://biplt0g2bgill"]
+[gd_scene load_steps=6 format=3 uid="uid://beerwmecwodg1"]
 
 [ext_resource type="Script" path="res://Scripts/Globals/enemy.gd" id="1_xb811"]
 [ext_resource type="Texture2D" uid="uid://ccdw0thede5t6" path="res://Assets/Enemy/enemy_04.png" id="2_eyoaw"]
@@ -40,7 +40,6 @@ script = ExtResource("1_xb811")
 position = Vector2(0, -24)
 scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_g6e0q")
-animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Body"]
 position = Vector2(-0.5, -23)

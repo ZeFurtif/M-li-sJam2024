@@ -1,5 +1,8 @@
 extends Node
 
+signal _event_damage_received(damage)
+
+var HEALTH = 100
 var PLAYING_BODY = true
 var PLAYING_SOUL = 0
 var SOULS = []
@@ -32,3 +35,7 @@ func unbind(i):
 func bind_pos(i, pos):
 	if i >= 0 and i < len(SOULS):
 		BOUND_POS[i] = pos
+
+func take_damage(damage):
+	_event_damage_received.emit(damage)
+	HEALTH -= damage
