@@ -22,21 +22,25 @@ shape = SubResource("WorldBoundaryShape2D_ptp8n")
 position = Vector2(2, -52)
 
 [node name="Enemy" parent="." instance=ExtResource("2_3br0c")]
-position = Vector2(103, 0)
+position = Vector2(103, -67)
 
 [node name="EnemySouls" parent="Enemy" instance=ExtResource("3_g3bi3")]
+position = Vector2(0, 55)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-light_mask = 3
+[node name="Case_01" type="StaticBody2D" parent="."]
+position = Vector2(329, 0)
+collision_layer = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Case_01"]
 material = SubResource("CanvasItemMaterial_dok0u")
-position = Vector2(331, -10)
+position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_f6805")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="Case_02" type="StaticBody2D" parent="."]
+position = Vector2(0, 1)
+collision_layer = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Case_02"]
 material = SubResource("CanvasItemMaterial_dok0u")
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_f6805")

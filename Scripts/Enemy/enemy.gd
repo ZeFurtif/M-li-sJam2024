@@ -4,6 +4,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @export var speed = 60
 @export var enemy_name = "Enemy_04"
+#@export var enemy_type = EnemyGlobals.type[1]
 
 var direction = 1
 
@@ -25,6 +26,7 @@ func handle_body_movement(delta):
 	var body = find_child("Enemy_Body")
 	if not body.is_on_floor():
 		body.velocity.y += gravity * delta
+	body.move_and_slide()
 
 func CheckRaycast():
 	if raycast_left.is_colliding():
