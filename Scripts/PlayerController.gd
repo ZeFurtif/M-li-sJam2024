@@ -16,6 +16,8 @@ func _ready():
 	$Body/Camera2D/CanvasLayer.visible = true
 
 func _process(delta):
+	if PlayerGlobals.SOULS_AMOUNT < PlayerGlobals.MAX_SOULS:
+		spawn_soul()
 	
 	if Input.is_action_just_pressed("menu"):
 		IN_MENU = !IN_MENU

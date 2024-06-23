@@ -8,7 +8,7 @@ var PLAYING_SOUL = 0
 var SOULS = []
 var BOUND = [false, false, false]
 var BOUND_POS = [Vector2.ZERO, Vector2.ZERO, Vector2.ZERO]
-var MAX_SOULS = 3
+var MAX_SOULS = 1
 var SOULS_AMOUNT = 0
 var BINDING_LOCATION
 const BODY_SPEED = 100
@@ -40,3 +40,6 @@ func bind_pos(i, pos):
 func take_damage(damage):
 	_event_damage_received.emit(damage)
 	HEALTH -= damage
+
+func gain_soul():
+	MAX_SOULS += 1
