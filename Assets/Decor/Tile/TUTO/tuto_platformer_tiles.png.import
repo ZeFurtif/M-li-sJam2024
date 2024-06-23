@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxn7ibto7kute"
-path="res://.godot/imported/CHAINE TILES4.png-1fcaa53efbc8421931afc84f4de6a80c.ctex"
+uid="uid://c71noca0ajpu8"
+path="res://.godot/imported/tuto_platformer_tiles.png-2137edffe630053608b0e7ece7bd4fad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Decor/Tile/CHAINE TILES4.png"
-dest_files=["res://.godot/imported/CHAINE TILES4.png-1fcaa53efbc8421931afc84f4de6a80c.ctex"]
+source_file="res://Assets/Decor/Tile/TUTO/tuto_platformer_tiles.png"
+dest_files=["res://.godot/imported/tuto_platformer_tiles.png-2137edffe630053608b0e7ece7bd4fad.ctex"]
 
 [params]
 

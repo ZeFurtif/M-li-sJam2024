@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0togltgwpaf7"
-path="res://.godot/imported/CHAINE TILES2NOCOL.png-3ad0da5400e192601abca3fd04824536.ctex"
+uid="uid://dr8f08rrjrjnf"
+path="res://.godot/imported/CHAINE TILES2.png-b9d3e5fa36eb5dda7b3d8653eeb41bf4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Decor/Tile/CHAINE TILES2NOCOL.png"
-dest_files=["res://.godot/imported/CHAINE TILES2NOCOL.png-3ad0da5400e192601abca3fd04824536.ctex"]
+source_file="res://Assets/Decor/Tile/CHAINE/CHAINE TILES2.png"
+dest_files=["res://.godot/imported/CHAINE TILES2.png-b9d3e5fa36eb5dda7b3d8653eeb41bf4.ctex"]
 
 [params]
 

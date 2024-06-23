@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp2ck6bf10htk"
-path="res://.godot/imported/Tilemap_props.png-68aac91101855fc98b00c89862020761.ctex"
+uid="uid://ce2cuhqn6mrpg"
+path="res://.godot/imported/tuto_platformer_tiles.png-70dc10f788f2e8163893d8a2c162301c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Decor/Tile/props/Tilemap_props.png"
-dest_files=["res://.godot/imported/Tilemap_props.png-68aac91101855fc98b00c89862020761.ctex"]
+source_file="res://Level/Hub/tuto_platformer_tiles.png"
+dest_files=["res://.godot/imported/tuto_platformer_tiles.png-70dc10f788f2e8163893d8a2c162301c.ctex"]
 
 [params]
 
