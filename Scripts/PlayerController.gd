@@ -5,6 +5,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var last_damage = 0
 var shake_speed = 2
 var shake_amplitude = 0
+var can_attack = true
 
 
 var IN_MENU = false
@@ -14,6 +15,7 @@ func _ready():
 	soul_target = $Body.position + Vector2(0, -20)
 	PlayerGlobals._event_damage_received.connect(_on_health_change)
 	$Body/Camera2D/CanvasLayer.visible = true
+	$Body/Area_Melee/CollisionShape2D.disabled = true
 
 func _process(delta):
 	if PlayerGlobals.SOULS_AMOUNT < PlayerGlobals.MAX_SOULS:
@@ -75,8 +77,10 @@ func handle_body_movement(delta):
 		body.velocity.x = direction * PlayerGlobals.BODY_SPEED
 		if body.velocity.x < 0:
 			body.find_child("AnimatedSprite2D").flip_h = true
+			$Body/Area_Melee.scale.x = -1
 		if body.velocity.x > 0:
 			body.find_child("AnimatedSprite2D").flip_h = false
+			$Body/Area_Melee.scale.x = 1
 	else:
 		body.velocity.x = move_toward(body.velocity.x, 0, PlayerGlobals.BODY_SPEED)
 	handle_body_animations(direction, jumped)
@@ -251,10 +255,23 @@ func _on_title_menu_pressed():
 
 func handle_attack():
 	if Input.is_action_just_pressed("attack"):
+		can_attack = true
 		var attacks = ["attack1", "attack2"]
+		var overlapping_objects = $Body/Area_Melee.get_overlapping_bodies()
 		$Body/AnimatedSprite2D.play(attacks[randi_range(0,1)])
+		$Body/Area_Melee/CollisionShape2D.disabled = false
+		await get_tree().create_timer(0.1).timeout
+		can_attack = false
+		$Body/Area_Melee/CollisionShape2D.disabled = true
 
 func lock_cam_y(value):
 	LOCKED_CAM_Y = !LOCKED_CAM_Y
 	$Body/Camera2D.set("limit_top", $Body.position.y+value)
 	$Body/Camera2D.set("limit_bottom", $Body.position.y+value)
+
+func _on_area_melee_body_entered(body):
+	if body.is_in_group("enemy") && can_attack == true:
+		body.queue_free()
+		if body.has_method("take_damage"):
+			print(body.name)
+			body.take_damage(2)

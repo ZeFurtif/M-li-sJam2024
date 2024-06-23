@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccdw0thede5t6"
-path="res://.godot/imported/enemy_04.png-2370f5d5f85faa3651c1e936a39b67c6.ctex"
+uid="uid://b6k7amxg7h852"
+path="res://.godot/imported/PETUNIA_DEATH00005.png-4b345b66f4f0da888dbe6f8c9ee4e822.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemy/enemy_04.png"
-dest_files=["res://.godot/imported/enemy_04.png-2370f5d5f85faa3651c1e936a39b67c6.ctex"]
+source_file="res://Assets/Enemy/FOURBE/DEATH/PETUNIA_DEATH00005.png"
+dest_files=["res://.godot/imported/PETUNIA_DEATH00005.png-4b345b66f4f0da888dbe6f8c9ee4e822.ctex"]
 
 [params]
 
