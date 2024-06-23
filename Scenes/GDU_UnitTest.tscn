@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfgptuaawmais"]
+[gd_scene load_steps=7 format=3 uid="uid://dfgptuaawmais"]
 
 [ext_resource type="PackedScene" uid="uid://dukhtm8jquwvs" path="res://Prefabs/player.tscn" id="1_5lwia"]
 [ext_resource type="PackedScene" uid="uid://beerwmecwodg1" path="res://Prefabs/enemy.tscn" id="2_3br0c"]
+[ext_resource type="PackedScene" uid="uid://bmms0lep31w74" path="res://Prefabs/enemy_spawner.tscn" id="3_mfc0j"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ptp8n"]
 
@@ -23,7 +24,11 @@ position = Vector2(-9, -24)
 [node name="Enemy" parent="." instance=ExtResource("2_3br0c")]
 position = Vector2(225, -46)
 scale = Vector2(1, 0.99506)
-myType = 3
+myType = 2
+
+[node name="Enemy_Spawner" parent="." instance=ExtResource("3_mfc0j")]
+position = Vector2(1.00002, -96)
+scale = Vector2(0.971932, 0.99506)
 
 [node name="Case_01" type="StaticBody2D" parent="." groups=["col"]]
 position = Vector2(329, 0)
