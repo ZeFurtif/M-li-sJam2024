@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://cfkt7p6wub67u"]
 
-[ext_resource type="PackedScene" uid="uid://0t8rrv41blrx" path="res://Prefabs/player_prefab.tscn" id="1_unoga"]
+[ext_resource type="PackedScene" uid="uid://dukhtm8jquwvs" path="res://Prefabs/player.tscn" id="1_unoga"]
 [ext_resource type="Texture2D" uid="uid://cg50scp7av4h2" path="res://Assets/Decor/LevelA/CHAINE _PLAN_2_V01.png" id="2_ib7fw"]
 [ext_resource type="Texture2D" uid="uid://b1hphb5q36b7t" path="res://Assets/Decor/LevelA/CHAINE _PLAN_3_V01.png" id="2_s5yb1"]
 [ext_resource type="Texture2D" uid="uid://d0b7wbn3a1wir" path="res://Assets/Decor/LevelA/CHAINE _PLAN_1_V01.png" id="4_6mv7b"]

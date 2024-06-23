@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgl35oql2tcwj"
-path="res://.godot/imported/caret-up-solid.svg-37491d807fbe74af6985fee632da8a9f.ctex"
+path="res://.godot/imported/caret-up-solid.svg-6fc5b672ed5c4342dab1b2f79e74e99a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Prefabs/caret-up-solid.svg"
-dest_files=["res://.godot/imported/caret-up-solid.svg-37491d807fbe74af6985fee632da8a9f.ctex"]
+source_file="res://Assets/UI/caret-up-solid.svg"
+dest_files=["res://.godot/imported/caret-up-solid.svg-6fc5b672ed5c4342dab1b2f79e74e99a.ctex"]
 
 [params]
 
