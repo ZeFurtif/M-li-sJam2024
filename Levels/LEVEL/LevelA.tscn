@@ -251,6 +251,7 @@ texture = ExtResource("3_a8fnw")
 
 [node name="CHAINS" type="ParallaxBackground" parent="."]
 layer = 1
+visible = false
 scale = Vector2(1.2, 1.2)
 transform = Transform2D(1.2, 0, 0, 1.2, 0, 0)
 
