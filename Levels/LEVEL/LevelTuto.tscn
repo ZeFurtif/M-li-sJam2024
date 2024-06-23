@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b6jyjaewn0x3y"]
+[gd_scene load_steps=16 format=3 uid="uid://b6jyjaewn0x3y"]
 
 [ext_resource type="Script" path="res://Scripts/LockCameraY.gd" id="1_wp40k"]
 [ext_resource type="PackedScene" uid="uid://dukhtm8jquwvs" path="res://Prefabs/player.tscn" id="2_qfre3"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cu3ewa0phgijb" path="res://Prefabs/Key.tscn" id="8_4wpw3"]
 [ext_resource type="PackedScene" uid="uid://cvwdaqy2reix7" path="res://Prefabs/interactible.tscn" id="9_ysiu1"]
 [ext_resource type="Script" path="res://Levels/HUB/LevelHub.gd" id="10_y85mo"]
+[ext_resource type="PackedScene" uid="uid://bmms0lep31w74" path="res://Prefabs/enemy_spawner.tscn" id="11_ik3jf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bmvnk"]
 texture = ExtResource("3_mudhd")
@@ -15083,6 +15084,9 @@ script = ExtResource("10_y85mo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(678, 25)
 shape = SubResource("RectangleShape2D_qxcyw")
+
+[node name="Enemy_Spawner" parent="." instance=ExtResource("11_ik3jf")]
+position = Vector2(31, -13)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

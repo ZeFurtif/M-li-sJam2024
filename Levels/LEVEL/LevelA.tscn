@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cfkt7p6wub67u"]
+[gd_scene load_steps=25 format=3 uid="uid://cfkt7p6wub67u"]
 
 [ext_resource type="PackedScene" uid="uid://dukhtm8jquwvs" path="res://Prefabs/player.tscn" id="1_q3v0q"]
 [ext_resource type="Texture2D" uid="uid://b1hphb5q36b7t" path="res://Assets/Decor/LevelA/CHAINE _PLAN_3_V01.png" id="2_dn5nj"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dvhciwfmpjuki" path="res://Assets/Decor/Tile/CHAINE/CHAINE TILES5.png" id="12_ye5lo"]
 [ext_resource type="PackedScene" uid="uid://cu3ewa0phgijb" path="res://Prefabs/Key.tscn" id="13_dq23d"]
 [ext_resource type="PackedScene" uid="uid://cvwdaqy2reix7" path="res://Prefabs/interactible.tscn" id="14_ytish"]
+[ext_resource type="PackedScene" uid="uid://bmms0lep31w74" path="res://Prefabs/enemy_spawner.tscn" id="15_qdlat"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uem4a"]
 texture = ExtResource("5_fupx3")
@@ -302,3 +303,15 @@ offset_right = 100.0
 offset_bottom = 727.0
 text = "BRAVO
 va toucher de l'herbe"
+
+[node name="Enemy_Spawner" parent="." instance=ExtResource("15_qdlat")]
+position = Vector2(621, 417)
+
+[node name="Enemy_Spawner2" parent="." instance=ExtResource("15_qdlat")]
+position = Vector2(1064, 424)
+
+[node name="Enemy_Spawner3" parent="." instance=ExtResource("15_qdlat")]
+position = Vector2(423, -526)
+
+[node name="Enemy_Spawner4" parent="." instance=ExtResource("15_qdlat")]
+position = Vector2(828, -723)
