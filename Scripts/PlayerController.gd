@@ -38,7 +38,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("kill_soul"):
 		kill_soul()
 		#PlayerGlobals.take_damage(5)
-		
+	
+	handle_attack()
+	
 	if PlayerGlobals.PLAYING_BODY:
 		handle_body_movement(delta)
 		set_soul_vignette(0)
@@ -60,7 +62,6 @@ func handle_body_movement(delta):
 	var jumped = false
 	if not body.is_on_floor():
 		body.velocity.y += gravity * delta
-	
 	if Input.is_action_pressed("jump") and body.is_on_floor():
 		body.velocity.y = PlayerGlobals.JUMP_VELOCITY
 		jumped = true
@@ -85,6 +86,8 @@ func handle_body_follow(delta):
 	body.move_and_slide()
 
 func handle_body_animations(direction, jump):
+	if $Body/AnimatedSprite2D.animation == "attack1" and $Body/AnimatedSprite2D.is_playing():
+		return
 	if $Body.is_on_floor():
 		if direction == 0:
 			$Body/AnimatedSprite2D.play("idle")
@@ -241,3 +244,7 @@ func _on_quit_pressed():
 
 func _on_title_menu_pressed():
 	get_tree().change_scene_to_file("res://Levels/MENU/title_menu.tscn")
+
+func handle_attack():
+	if Input.is_action_just_pressed("attack"):
+		$Body/AnimatedSprite2D.play("attack1")
