@@ -1,0 +1,201 @@
+[gd_scene load_steps=12 format=3 uid="uid://co6l5heu6t657"]
+
+[ext_resource type="Script" path="res://Scripts/TitleScreen.gd" id="1_pc4tr"]
+[ext_resource type="Texture2D" uid="uid://dg44l7ipc4wfh" path="res://Assets/UI/BODY&SOULS_titleScreen.png" id="2_vd4li"]
+[ext_resource type="Texture2D" uid="uid://c4gh15oqlb3rl" path="res://Assets/UI/ICONS/play-solid.svg" id="3_m6l6i"]
+[ext_resource type="StyleBox" uid="uid://cg8del86cupok" path="res://Levels/MENU/focus_style.tres" id="3_xkvuk"]
+[ext_resource type="Texture2D" uid="uid://cv86o17uid5oj" path="res://Assets/UI/ICONS/gear-solid.svg" id="4_pk3eg"]
+[ext_resource type="Texture2D" uid="uid://c140xjuix1jmf" path="res://Assets/UI/ICONS/people-group-solid.svg" id="5_x0gpy"]
+[ext_resource type="Texture2D" uid="uid://dhat4fiw26wcb" path="res://Assets/UI/ICONS/power-off-solid.svg" id="6_sr3n7"]
+[ext_resource type="Texture2D" uid="uid://d6nfsrqajjuh" path="res://Assets/UI/ICONS/back.svg" id="7_yc2u0"]
+[ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="8_xwfe3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6klmf"]
+font_size = 30
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.380392)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ani1j"]
+shader = ExtResource("8_xwfe3")
+shader_parameter/resolution = Vector2(1280, 720)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[node name="TitleMenu" type="Node2D"]
+position = Vector2(0, -1)
+script = ExtResource("1_pc4tr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_vd4li")
+
+[node name="TITLE" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="CanvasLayer/TITLE"]
+layout_mode = 0
+offset_left = 1312.0
+offset_top = 304.0
+offset_right = 1552.0
+offset_bottom = 472.0
+focus_neighbor_right = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../Quit")
+theme_override_styles/focus = ExtResource("3_xkvuk")
+icon = ExtResource("3_m6l6i")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Settings" type="Button" parent="CanvasLayer/TITLE"]
+layout_mode = 0
+offset_left = 1576.0
+offset_top = 304.0
+offset_right = 1672.0
+offset_bottom = 375.0
+focus_neighbor_left = NodePath("../Play")
+focus_neighbor_right = NodePath("../Credits")
+focus_neighbor_bottom = NodePath("../Quit")
+theme_override_styles/focus = ExtResource("3_xkvuk")
+icon = ExtResource("4_pk3eg")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Credits" type="Button" parent="CanvasLayer/TITLE"]
+layout_mode = 0
+offset_left = 1696.0
+offset_top = 304.0
+offset_right = 1792.0
+offset_bottom = 375.0
+focus_neighbor_left = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../Quit")
+theme_override_styles/focus = ExtResource("3_xkvuk")
+icon = ExtResource("5_x0gpy")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Quit" type="Button" parent="CanvasLayer/TITLE"]
+layout_mode = 0
+offset_left = 1576.0
+offset_top = 400.0
+offset_right = 1795.0
+offset_bottom = 471.0
+focus_neighbor_left = NodePath("../Play")
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_right = NodePath("../Credits")
+theme_override_styles/focus = ExtResource("3_xkvuk")
+icon = ExtResource("6_sr3n7")
+icon_alignment = 1
+expand_icon = true
+
+[node name="SETTINGS" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/SETTINGS"]
+layout_mode = 0
+offset_left = 1272.0
+offset_top = 72.0
+offset_right = 1792.0
+offset_bottom = 480.0
+color = Color(0.964706, 0.905882, 0.796078, 1)
+
+[node name="Back" type="Button" parent="CanvasLayer/SETTINGS"]
+layout_mode = 0
+offset_left = 1736.0
+offset_top = 424.0
+offset_right = 1808.0
+offset_bottom = 488.0
+focus_neighbor_top = NodePath("../VolumeSlider")
+theme_override_styles/focus = ExtResource("3_xkvuk")
+icon = ExtResource("7_yc2u0")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VolumeSlider" type="HSlider" parent="CanvasLayer/SETTINGS"]
+layout_mode = 0
+offset_left = 1448.0
+offset_top = 104.0
+offset_right = 1768.0
+offset_bottom = 152.0
+focus_neighbor_bottom = NodePath("../Back")
+min_value = -50.0
+max_value = 6.0
+value = 6.0
+
+[node name="VolumeLabel" type="Label" parent="CanvasLayer/SETTINGS"]
+layout_mode = 0
+offset_left = 1312.0
+offset_top = 104.0
+offset_right = 1440.0
+offset_bottom = 146.0
+text = "Volume"
+label_settings = SubResource("LabelSettings_6klmf")
+
+[node name="CREDITS" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CREDITS"]
+layout_mode = 0
+offset_left = 1272.0
+offset_top = 72.0
+offset_right = 1792.0
+offset_bottom = 480.0
+color = Color(0.964706, 0.905882, 0.796078, 1)
+
+[node name="Back" type="Button" parent="CanvasLayer/CREDITS"]
+layout_mode = 0
+offset_left = 1736.0
+offset_top = 424.0
+offset_right = 1808.0
+offset_bottom = 488.0
+icon = ExtResource("7_yc2u0")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_ani1j")
+layout_direction = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="CanvasLayer/TITLE/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/TITLE/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/TITLE/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/TITLE/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/SETTINGS/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="CanvasLayer/SETTINGS/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/CREDITS/Back" to="." method="_on_back_pressed"]

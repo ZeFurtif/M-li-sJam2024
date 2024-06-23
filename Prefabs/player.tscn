@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dukhtm8jquwvs"]
+[gd_scene load_steps=13 format=3 uid="uid://dukhtm8jquwvs"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_5awsi"]
 [ext_resource type="Shader" path="res://Shaders/vignette.gdshader" id="2_euhcv"]
-[ext_resource type="Texture2D" uid="uid://ib6ypuh6lbe8" path="res://Assets/Body/brawlbot_trans.png" id="2_lx07d"]
+[ext_resource type="Texture2D" uid="uid://ib6ypuh6lbe8" path="res://Assets/Placeholder/brawlbot_trans.png" id="2_lx07d"]
 [ext_resource type="Shader" path="res://Shaders/chroma_aberration.gdshader" id="4_lyru5"]
 [ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="4_shgdw"]
+[ext_resource type="StyleBox" uid="uid://cg8del86cupok" path="res://Levels/MENU/focus_style.tres" id="6_iibem"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0gbl3"]
 
@@ -72,7 +73,6 @@ scale = Vector2(0.02, 0.02)
 sprite_frames = SubResource("SpriteFrames_em1l4")
 
 [node name="Camera2D" type="Camera2D" parent="Body"]
-scale = Vector2(0.819292, 0.0437813)
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
@@ -83,6 +83,8 @@ drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Body/Camera2D"]
+layer = 4
+visible = false
 
 [node name="SoulVignette" type="ColorRect" parent="Body/Camera2D/CanvasLayer"]
 material = SubResource("ShaderMaterial_g8xt4")
@@ -128,6 +130,7 @@ size_flags_vertical = 3
 mouse_filter = 2
 
 [node name="CanvasLayerUI" type="CanvasLayer" parent="Body/Camera2D"]
+layer = 5
 
 [node name="MENU" type="Control" parent="Body/Camera2D/CanvasLayerUI"]
 visible = false
@@ -182,6 +185,7 @@ offset_right = 192.0
 offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = ExtResource("6_iibem")
 text = "RESUME
 "
 
@@ -198,6 +202,7 @@ offset_right = 192.0
 offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = ExtResource("6_iibem")
 text = "TITLE MENU
 "
 
@@ -214,6 +219,7 @@ offset_right = 192.0
 offset_bottom = 103.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = ExtResource("6_iibem")
 text = "QUIT
 "
 

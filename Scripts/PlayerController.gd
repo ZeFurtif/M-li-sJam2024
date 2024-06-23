@@ -11,11 +11,14 @@ var IN_MENU = false
 func _ready():
 	soul_target = $Body.position + Vector2(0, -20)
 	PlayerGlobals._event_damage_received.connect(_on_health_change)
+	$Body/Camera2D/CanvasLayer.visible = true
 
 func _process(delta):
 	
 	if Input.is_action_just_pressed("menu"):
 		IN_MENU = !IN_MENU
+		if IN_MENU:
+			$Body/Camera2D/CanvasLayerUI/MENU/Resume.grab_focus()
 	$Body/Camera2D/CanvasLayerUI/MENU.visible = IN_MENU
 	$Body/Camera2D/CanvasLayer/CRT.visible = IN_MENU
 	if IN_MENU:
@@ -34,7 +37,7 @@ func _process(delta):
 		spawn_soul()		
 	if Input.is_action_just_pressed("kill_soul"):
 		kill_soul()
-		PlayerGlobals.take_damage(5)
+		#PlayerGlobals.take_damage(5)
 		
 	if PlayerGlobals.PLAYING_BODY:
 		handle_body_movement(delta)
@@ -106,8 +109,8 @@ func handle_soul_follow(delta):
 		if soul.is_in_group("soul"):
 			if !PlayerGlobals.BOUND[current_idx]:
 				if PlayerGlobals.PLAYING_BODY or current_idx != PlayerGlobals.PLAYING_SOUL:
-					soul_target.x = move_toward(soul_target.x, $Body.position.x, 0.7)
-					soul_target.y = move_toward(soul_target.y, $Body.position.y, 0.7)
+					soul_target.x = move_toward(soul_target.x, $Body.position.x, 1*10)
+					soul_target.y = move_toward(soul_target.y, $Body.position.y, 1*10)
 					var target = soul_target + Vector2(-25*(current_idx-1),-30)
 					var rdm = sin(Time.get_ticks_msec()*0.0005*(current_idx+1))*10
 					target.y += rdm

@@ -9,14 +9,17 @@ func _ready():
 
 func updateUI():
 	if CURRENT_STATE == menuState.TITLE:
+		$CanvasLayer/TITLE/Play.grab_focus()
 		$CanvasLayer/TITLE.visible = true
 		$CanvasLayer/SETTINGS.visible = false
 		$CanvasLayer/CREDITS.visible = false
 	elif CURRENT_STATE == menuState.SETTINGS:
+		$CanvasLayer/SETTINGS/Back.grab_focus()
 		$CanvasLayer/TITLE.visible = false
 		$CanvasLayer/SETTINGS.visible = true
 		$CanvasLayer/CREDITS.visible = false
 	elif CURRENT_STATE == menuState.CREDITS:
+		$CanvasLayer/CREDITS/Back.grab_focus()
 		$CanvasLayer/TITLE.visible = false
 		$CanvasLayer/SETTINGS.visible = false
 		$CanvasLayer/CREDITS.visible = true

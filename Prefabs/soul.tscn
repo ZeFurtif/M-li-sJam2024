@@ -1,8 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3xomj5if6uas"]
+[gd_scene load_steps=17 format=3 uid="uid://d3xomj5if6uas"]
 
-[ext_resource type="Texture2D" uid="uid://bwh34q67mwb4i" path="res://Assets/Soul/faded_sphere.png" id="2_thtlu"]
+[ext_resource type="Texture2D" uid="uid://bwh34q67mwb4i" path="res://Assets/Player/Soul/faded_sphere.png" id="1_dshhc"]
 [ext_resource type="Shader" path="res://Shaders/white.gdshader" id="3_j2vd0"]
-[ext_resource type="Texture2D" uid="uid://bbo158vf3yaux" path="res://Assets/UI/arrow.svg" id="4_wk6lf"]
+[ext_resource type="Texture2D" uid="uid://bbo158vf3yaux" path="res://Assets/UI/ICONS/arrow.svg" id="3_m22ps"]
+
+[sub_resource type="Gradient" id="Gradient_lsf0w"]
+offsets = PackedFloat32Array(0, 0.798969)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c75tl"]
+gradient = SubResource("Gradient_lsf0w")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1pwm"]
 
@@ -45,7 +56,7 @@ background_mode = 3
 ambient_light_source = 2
 ambient_light_color = Color(0.668174, 0.206816, 1, 1)
 glow_enabled = true
-glow_intensity = 1.39
+glow_intensity = 1.2
 glow_strength = 0.61
 glow_bloom = 0.66
 glow_blend_mode = 0
@@ -57,9 +68,16 @@ glow_map_strength = 1.0
 shader = ExtResource("3_j2vd0")
 
 [node name="Soul" type="CharacterBody2D" groups=["soul"]]
+z_index = 30
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.345098, 1, 1, 1)
+energy = 0.2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_c75tl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["soul"]]
 shape = SubResource("CircleShape2D_g1pwm")
@@ -70,7 +88,7 @@ sprite_frames = SubResource("SpriteFrames_bfonk")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." groups=["soul"]]
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_0ssf3")
-texture = ExtResource("2_thtlu")
+texture = ExtResource("1_dshhc")
 
 [node name="Area2D" type="Area2D" parent="." groups=["soul"]]
 
@@ -85,4 +103,4 @@ material = SubResource("ShaderMaterial_0qfb1")
 position = Vector2(-8.47033e-22, -24)
 rotation = 3.14159
 scale = Vector2(0.03, 0.03)
-texture = ExtResource("4_wk6lf")
+texture = ExtResource("3_m22ps")

@@ -13,7 +13,7 @@ var SOULS_AMOUNT = 0
 var BINDING_LOCATION
 const BODY_SPEED = 120
 const SOUL_SPEED = 100
-const JUMP_VELOCITY = -250
+const JUMP_VELOCITY = -350
 
 func add_to_shape_array(shape):
 	if shape in SOULS:
