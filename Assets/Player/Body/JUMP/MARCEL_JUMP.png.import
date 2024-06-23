@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce2cuhqn6mrpg"
-path="res://.godot/imported/tuto_platformer_tiles.png-e5944c60730b88ecddbe25976a88f453.ctex"
+uid="uid://dligijhstqxqo"
+path="res://.godot/imported/MARCEL_JUMP.png-14519372a5989de2ad62adb6a8e64713.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/HUB/tuto_platformer_tiles.png"
-dest_files=["res://.godot/imported/tuto_platformer_tiles.png-e5944c60730b88ecddbe25976a88f453.ctex"]
+source_file="res://Assets/Player/Body/JUMP/MARCEL_JUMP.png"
+dest_files=["res://.godot/imported/MARCEL_JUMP.png-14519372a5989de2ad62adb6a8e64713.ctex"]
 
 [params]
 

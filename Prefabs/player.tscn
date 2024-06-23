@@ -1,9 +1,8 @@
-[gd_scene load_steps=91 format=3 uid="uid://dukhtm8jquwvs"]
+[gd_scene load_steps=92 format=3 uid="uid://dukhtm8jquwvs"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_5awsi"]
 [ext_resource type="Texture2D" uid="uid://ckahaeunarfqg" path="res://Assets/Player/Body/ATTACK1/MARCEL_ATACK_1.png" id="2_6j2t1"]
 [ext_resource type="Shader" path="res://Shaders/vignette.gdshader" id="2_euhcv"]
-[ext_resource type="Texture2D" uid="uid://ib6ypuh6lbe8" path="res://Assets/Placeholder/brawlbot_trans.png" id="2_lx07d"]
 [ext_resource type="Texture2D" uid="uid://vmetmd8m2lye" path="res://Assets/Player/Body/ATTACK1/MARCEL_ATACK_2.png" id="3_f2bmk"]
 [ext_resource type="Texture2D" uid="uid://c8iba0jhsw7mq" path="res://Assets/Player/Body/HIT/MARCEL_ENCAISSE00000.png" id="3_hiwfi"]
 [ext_resource type="Texture2D" uid="uid://cr6aj4gxpsbsu" path="res://Assets/Player/Body/ATTACK1/MARCEL_ATACK_3.png" id="4_1xtnm"]
@@ -24,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bvpvu5gl5h1a8" path="res://Assets/Player/Body/ATTACK1/MARCEL_ATACK_9.png" id="10_apc4h"]
 [ext_resource type="Texture2D" uid="uid://bicvk65acp1rm" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00001.png" id="10_w22mu"]
 [ext_resource type="Texture2D" uid="uid://m8qcf3cafuku" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00002.png" id="11_nrk5h"]
+[ext_resource type="Texture2D" uid="uid://c1yqcdbxnh3p" path="res://Assets/Player/Body/FALL/MARCEL_FALL.png" id="11_xd4mx"]
 [ext_resource type="Texture2D" uid="uid://b8gr2mwykqftr" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00003.png" id="12_waknq"]
 [ext_resource type="Texture2D" uid="uid://boha6th0hnsub" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00004.png" id="13_yjotn"]
 [ext_resource type="Texture2D" uid="uid://b7scxwwmv3bm7" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00005.png" id="14_15bnl"]
@@ -67,6 +67,7 @@
 [ext_resource type="Texture2D" uid="uid://cdmr7g257pxmw" path="res://Assets/Player/Body/WALK/WALK_v9.png" id="52_ng6ek"]
 [ext_resource type="Texture2D" uid="uid://bgrfkhpnxi30q" path="res://Assets/Player/Body/WALK/WALK_v10.png" id="53_yhs76"]
 [ext_resource type="Texture2D" uid="uid://0snba05qw8bv" path="res://Assets/Player/Body/WALK/WALK_v11.png" id="54_e3eq5"]
+[ext_resource type="Texture2D" uid="uid://dligijhstqxqo" path="res://Assets/Player/Body/JUMP/MARCEL_JUMP.png" id="54_svh6h"]
 [ext_resource type="Texture2D" uid="uid://4uihgwhylyc2" path="res://Assets/Player/Body/WALK/WALK_v12.png" id="55_js7tl"]
 [ext_resource type="Texture2D" uid="uid://bo4dvmtga3xdb" path="res://Assets/Player/Body/WALK/WALK_v13.png" id="56_nkffm"]
 [ext_resource type="Texture2D" uid="uid://b7l78whhha8uk" path="res://Assets/Player/Body/WALK/WALK_v14.png" id="57_fcrgi"]
@@ -133,7 +134,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_lx07d")
+"texture": ExtResource("11_xd4mx")
 }],
 "loop": true,
 "name": &"falling",
@@ -277,7 +278,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_lx07d")
+"texture": ExtResource("54_svh6h")
 }],
 "loop": true,
 "name": &"jump",
@@ -417,7 +418,7 @@ glow_map_strength = 1.0
 [node name="Player" type="Node2D"]
 script = ExtResource("1_5awsi")
 
-[node name="Body" type="CharacterBody2D" parent="."]
+[node name="Body" type="CharacterBody2D" parent="." groups=["player_body"]]
 
 [node name="PointLight2D" type="PointLight2D" parent="Body"]
 color = Color(0.278431, 1, 1, 1)
@@ -430,10 +431,8 @@ shape = SubResource("CapsuleShape2D_0gbl3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body"]
 scale = Vector2(0.0444444, 0.0444444)
 sprite_frames = SubResource("SpriteFrames_em1l4")
-animation = &"attack1"
+animation = &"jump"
 autoplay = "idle"
-frame = 8
-frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="Body"]
 zoom = Vector2(3, 3)

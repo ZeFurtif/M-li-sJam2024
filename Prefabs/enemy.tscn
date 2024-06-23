@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://beerwmecwodg1"]
+[gd_scene load_steps=8 format=3 uid="uid://beerwmecwodg1"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/enemy.gd" id="1_emlbp"]
 [ext_resource type="Texture2D" uid="uid://ccdw0thede5t6" path="res://Assets/Enemy/enemy_04.png" id="2_eyoaw"]
+[ext_resource type="Texture2D" uid="uid://dkem8nxb64xj7" path="res://icon.svg" id="3_fmpt7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pr1sg"]
 atlas = ExtResource("2_eyoaw")
@@ -28,8 +29,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xywy"]
-size = Vector2(19, 46)
+[sub_resource type="CircleShape2D" id="CircleShape2D_oprvn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1lvf5"]
+radius = 196.01
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_emlbp")
@@ -41,16 +44,20 @@ position = Vector2(0, -24)
 scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_g6e0q")
 
-[node name="RayCast2DLeft" type="RayCast2D" parent="Enemy_Body"]
-position = Vector2(0, -10)
-target_position = Vector2(-20, 0)
-collision_mask = 4
-
-[node name="RayCast2DRight" type="RayCast2D" parent="Enemy_Body"]
-position = Vector2(0, -10)
-target_position = Vector2(20, 0)
-collision_mask = 4
+[node name="Icon" type="Sprite2D" parent="Enemy_Body/AnimatedSprite2D"]
+position = Vector2(3.57628e-06, 480)
+scale = Vector2(2.42188, 2.42188)
+texture = ExtResource("3_fmpt7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Body"]
-position = Vector2(-0.5, -23)
-shape = SubResource("RectangleShape2D_3xywy")
+shape = SubResource("CircleShape2D_oprvn")
+
+[node name="PlayerRange" type="Area2D" parent="Enemy_Body"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Body/PlayerRange"]
+shape = SubResource("CircleShape2D_1lvf5")
+
+[node name="RayCast2D" type="RayCast2D" parent="Enemy_Body"]
+
+[connection signal="body_entered" from="Enemy_Body/PlayerRange" to="." method="_on_player_range_body_entered"]
+[connection signal="body_exited" from="Enemy_Body/PlayerRange" to="." method="_on_player_range_body_exited"]

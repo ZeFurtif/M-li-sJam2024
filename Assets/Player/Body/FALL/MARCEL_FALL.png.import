@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce2cuhqn6mrpg"
-path="res://.godot/imported/tuto_platformer_tiles.png-e5944c60730b88ecddbe25976a88f453.ctex"
+uid="uid://c1yqcdbxnh3p"
+path="res://.godot/imported/MARCEL_FALL.png-201a9530e39e96348421be7be1479e26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/HUB/tuto_platformer_tiles.png"
-dest_files=["res://.godot/imported/tuto_platformer_tiles.png-e5944c60730b88ecddbe25976a88f453.ctex"]
+source_file="res://Assets/Player/Body/FALL/MARCEL_FALL.png"
+dest_files=["res://.godot/imported/MARCEL_FALL.png-201a9530e39e96348421be7be1479e26.ctex"]
 
 [params]
 

@@ -38,5 +38,5 @@ collision_layer = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Case_02"]
 material = SubResource("CanvasItemMaterial_dok0u")
-position = Vector2(46, -34)
+position = Vector2(-25, -12)
 shape = SubResource("RectangleShape2D_f6805")

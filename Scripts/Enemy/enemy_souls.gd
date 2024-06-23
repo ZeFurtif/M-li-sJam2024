@@ -1,37 +1,17 @@
 extends Node2D
 
-@export var rotation_speed = 2
+var spawn_time = 0
+var lifetime = 1500
 
-@onready var anchors = $Anchors
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	spawn_time = Time.get_ticks_msec()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	anchors.rotation += rotation_speed * delta
-	#print(anchors.rotation)
+	if Time.get_ticks_msec() - spawn_time >= lifetime:
+		queue_free()
 
-func _on_fire_souls_01_body_entered(body):
-	print(body.name)
-	if(body.name == "Body"):
-		body.die()
-
-
-func _on_fire_souls_02_body_entered(body):
-	print(body.name)
-	if(body.name == "Body"):
-		body.die()
-
-
-func _on_fire_souls_03_body_entered(body):
-	print(body.name)
-	if(body.name == "Body"):
-		body.die()
-
-
-func _on_fire_souls_04_body_entered(body):
-	print(body.name)
-	if(body.name == "Body"):
-		body.Pla()
+func _on_rigid_body_2d_body_entered(body):
+	print(body)
+	if(body.is_in_group("player_body")):
+		PlayerGlobals.take_damage(2)
+		queue_free()
