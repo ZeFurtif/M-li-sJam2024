@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=4 format=3 uid="uid://cpku4k386dm1d"]
+=======
+[gd_scene load_steps=3 format=3 uid="uid://cpku4k386dm1d"]
+>>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" uid="uid://dukhtm8jquwvs" path="res://Prefabs/player.tscn" id="1_kusv7"]
 
@@ -69,12 +73,15 @@ offset_right = 231.0
 offset_bottom = 186.0
 metadata/_edit_use_anchors_ = true
 
+<<<<<<< Updated upstream
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(350.5, 231)
 shape = SubResource("RectangleShape2D_2inws")
 
+=======
+>>>>>>> Stashed changes
 [connection signal="body_entered" from="Background/Layer1/Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Background/Layer1/Area2D2" to="Background/Layer1/Area2D2" method="_on_body_entered"]
 [connection signal="body_entered" from="Background/Layer1/Area2D3" to="Background/Layer1/Area2D3" method="_on_body_entered"]
