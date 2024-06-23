@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://dukhtm8jquwvs"]
+[gd_scene load_steps=102 format=3 uid="uid://dukhtm8jquwvs"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_5awsi"]
 [ext_resource type="Texture2D" uid="uid://ckahaeunarfqg" path="res://Assets/Player/Body/ATTACK1/MARCEL_ATACK_1.png" id="2_6j2t1"]
@@ -22,16 +22,26 @@
 [ext_resource type="Texture2D" uid="uid://bsgtxjmfisbda" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00000.png" id="9_hsn0d"]
 [ext_resource type="Texture2D" uid="uid://bvpvu5gl5h1a8" path="res://Assets/Player/Body/ATTACK1/MARCEL_ATACK_9.png" id="10_apc4h"]
 [ext_resource type="Texture2D" uid="uid://bicvk65acp1rm" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00001.png" id="10_w22mu"]
+[ext_resource type="Texture2D" uid="uid://c5pk7q6w7ju8d" path="res://Assets/Player/Body/ATTACK2/MARCEL_ATACK2.png" id="11_3h5v8"]
 [ext_resource type="Texture2D" uid="uid://m8qcf3cafuku" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00002.png" id="11_nrk5h"]
 [ext_resource type="Texture2D" uid="uid://c1yqcdbxnh3p" path="res://Assets/Player/Body/FALL/MARCEL_FALL.png" id="11_xd4mx"]
+[ext_resource type="Texture2D" uid="uid://6ee8j1dsy8ay" path="res://Assets/Player/Body/ATTACK2/MARCEL_ATACK3.png" id="12_6inys"]
 [ext_resource type="Texture2D" uid="uid://b8gr2mwykqftr" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00003.png" id="12_waknq"]
+[ext_resource type="Texture2D" uid="uid://dybd4b0665m26" path="res://Assets/Player/Body/ATTACK2/MARCEL_ATACK4.png" id="13_xul8t"]
 [ext_resource type="Texture2D" uid="uid://boha6th0hnsub" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00004.png" id="13_yjotn"]
 [ext_resource type="Texture2D" uid="uid://b7scxwwmv3bm7" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00005.png" id="14_15bnl"]
+[ext_resource type="Texture2D" uid="uid://dreslcvotcuos" path="res://Assets/Player/Body/ATTACK2/MARCEL_ATACK5.png" id="14_oh6p0"]
+[ext_resource type="Texture2D" uid="uid://bb01qes888jxu" path="res://Assets/Player/Body/ATTACK2/MARCEL_ATACK6.png" id="15_2dirh"]
 [ext_resource type="Texture2D" uid="uid://bv3x1b6oukawy" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00006.png" id="15_73lm5"]
+[ext_resource type="Texture2D" uid="uid://dh4y00qf2n1bj" path="res://Assets/Player/Body/ATTACK2/MARCEL_ATACK7.png" id="16_i7ve0"]
 [ext_resource type="Texture2D" uid="uid://eya153w8fmtk" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00007.png" id="16_uvc45"]
+[ext_resource type="Texture2D" uid="uid://bsyq5ebl7u3qa" path="res://Assets/Player/Body/ATTACK2/MARCEL_ATACK8.png" id="17_bggk4"]
 [ext_resource type="Texture2D" uid="uid://ds8vp4jymdvwq" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00008.png" id="17_qgojq"]
+[ext_resource type="Texture2D" uid="uid://ci2x6nd1g42hf" path="res://Assets/Player/Body/ATTACK2/MARCEL_ATACK9.png" id="18_3ym2l"]
 [ext_resource type="Texture2D" uid="uid://di8dtx7l8frqg" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00009.png" id="18_jb8y3"]
+[ext_resource type="Texture2D" uid="uid://btpa48d5cjnta" path="res://Assets/Player/Body/ATTACK2/MARCEL_ATACK10.png" id="19_md8gk"]
 [ext_resource type="Texture2D" uid="uid://bpevoyvpcqulc" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00010.png" id="19_xdqg4"]
+[ext_resource type="Texture2D" uid="uid://bxdlsafjyfbsm" path="res://Assets/Player/Body/ATTACK2/MARCEL_ATACK11.png" id="20_bacgk"]
 [ext_resource type="Texture2D" uid="uid://bvhyrlsj6u864" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00011.png" id="20_swiha"]
 [ext_resource type="Texture2D" uid="uid://w0bax3sftx6h" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00012.png" id="21_86mib"]
 [ext_resource type="Texture2D" uid="uid://cn16v2yuwwcsc" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00013.png" id="22_osx6j"]
@@ -130,6 +140,41 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack1",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_3h5v8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6inys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_xul8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_oh6p0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2dirh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_i7ve0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_bggk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_3ym2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_md8gk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bacgk")
+}],
+"loop": false,
+"name": &"attack2",
 "speed": 30.0
 }, {
 "frames": [{
@@ -431,7 +476,7 @@ shape = SubResource("CapsuleShape2D_0gbl3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body"]
 scale = Vector2(0.0444444, 0.0444444)
 sprite_frames = SubResource("SpriteFrames_em1l4")
-animation = &"jump"
+animation = &"attack2"
 autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="Body"]

@@ -88,7 +88,7 @@ func handle_body_follow(delta):
 	body.move_and_slide()
 
 func handle_body_animations(direction, jump):
-	if $Body/AnimatedSprite2D.animation == "attack1" and $Body/AnimatedSprite2D.is_playing():
+	if $Body/AnimatedSprite2D.animation in ["attack1", "attack2"] and $Body/AnimatedSprite2D.is_playing():
 		return
 	if $Body.is_on_floor():
 		if direction == 0:
@@ -249,7 +249,8 @@ func _on_title_menu_pressed():
 
 func handle_attack():
 	if Input.is_action_just_pressed("attack"):
-		$Body/AnimatedSprite2D.play("attack1")
+		var attacks = ["attack1", "attack2"]
+		$Body/AnimatedSprite2D.play(attacks[randi_range(0,1)])
 
 func lock_cam_y(value):
 	LOCKED_CAM_Y = !LOCKED_CAM_Y
