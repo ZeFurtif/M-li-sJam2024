@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cfkt7p6wub67u"]
+[gd_scene load_steps=24 format=3 uid="uid://cfkt7p6wub67u"]
 
 [ext_resource type="PackedScene" uid="uid://dukhtm8jquwvs" path="res://Prefabs/player.tscn" id="1_q3v0q"]
 [ext_resource type="Texture2D" uid="uid://b1hphb5q36b7t" path="res://Assets/Decor/LevelA/CHAINE _PLAN_3_V01.png" id="2_dn5nj"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cs8kwskqt4gvd" path="res://Assets/Decor/Tile/CHAINE/CHAINE TILES3.png" id="10_7tkw3"]
 [ext_resource type="Texture2D" uid="uid://dxn7ibto7kute" path="res://Assets/Decor/Tile/CHAINE/CHAINE TILES4.png" id="11_udq5a"]
 [ext_resource type="Texture2D" uid="uid://dvhciwfmpjuki" path="res://Assets/Decor/Tile/CHAINE/CHAINE TILES5.png" id="12_ye5lo"]
+[ext_resource type="PackedScene" uid="uid://cu3ewa0phgijb" path="res://Prefabs/Key.tscn" id="13_dq23d"]
+[ext_resource type="PackedScene" uid="uid://cvwdaqy2reix7" path="res://Prefabs/interactible.tscn" id="14_ytish"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uem4a"]
 texture = ExtResource("5_fupx3")
@@ -284,3 +286,11 @@ range_layer_min = -100
 range_layer_max = -50
 shadow_enabled = true
 height = 1.0
+
+[node name="SHAPE" parent="." instance=ExtResource("13_dq23d")]
+position = Vector2(1110, -586)
+SHAPE = 1
+
+[node name="INTERACTIBLE" parent="." instance=ExtResource("14_ytish")]
+position = Vector2(280, 814)
+SHAPE_HOLE = 1

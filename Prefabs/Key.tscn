@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu3ewa0phgijb"]
+
+[ext_resource type="Script" path="res://Scripts/ShapeInteractibles.gd" id="1_jpv7u"]
+[ext_resource type="Texture2D" uid="uid://bi4uuefs1x2gf" path="res://Assets/Player/Soul/CLEF_1.png" id="2_8fm73"]
+[ext_resource type="Texture2D" uid="uid://bgnro37e8ebt" path="res://Assets/Player/Soul/CLEF_2.png" id="3_0vkpg"]
+[ext_resource type="Texture2D" uid="uid://cs7rbh7l2d1rv" path="res://Assets/UI/ICONS/key.svg" id="4_jh5tp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7myem"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tmrno"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8fm73")
+}],
+"loop": true,
+"name": &"key1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0vkpg")
+}],
+"loop": true,
+"name": &"key2",
+"speed": 5.0
+}]
+
+[node name="SHAPE" type="Node2D"]
+script = ExtResource("1_jpv7u")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7myem")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_tmrno")
+animation = &"key1"
+
+[node name="ghost" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("4_jh5tp")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
