@@ -15,6 +15,7 @@ const BODY_SPEED = 100
 const SOUL_SPEED = 100
 const JUMP_VELOCITY = -350
 
+
 func add_to_shape_array(shape):
 	if shape in SOULS:
 		print("Shape Already Remembered")

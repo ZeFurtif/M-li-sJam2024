@@ -6,7 +6,9 @@ var last_damage = 0
 var shake_speed = 2
 var shake_amplitude = 0
 
+
 var IN_MENU = false
+var LOCKED_CAM_Y = false
 
 func _ready():
 	soul_target = $Body.position + Vector2(0, -20)
@@ -248,3 +250,8 @@ func _on_title_menu_pressed():
 func handle_attack():
 	if Input.is_action_just_pressed("attack"):
 		$Body/AnimatedSprite2D.play("attack1")
+
+func lock_cam_y(value):
+	LOCKED_CAM_Y = !LOCKED_CAM_Y
+	$Body/Camera2D.set("limit_top", $Body.position.y+value)
+	$Body/Camera2D.set("limit_bottom", $Body.position.y+value)
