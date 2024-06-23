@@ -124,13 +124,13 @@ animations = [{
 "texture": ExtResource("5_di3jb")
 }, {
 "duration": 1.0,
+"texture": ExtResource("8_rwb4f")
+}, {
+"duration": 1.0,
 "texture": ExtResource("6_l2hx7")
 }, {
 "duration": 1.0,
 "texture": ExtResource("7_sjdkf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_rwb4f")
 }, {
 "duration": 1.0,
 "texture": ExtResource("9_gew3f")
@@ -478,6 +478,8 @@ scale = Vector2(0.0444444, 0.0444444)
 sprite_frames = SubResource("SpriteFrames_em1l4")
 animation = &"attack2"
 autoplay = "idle"
+frame = 8
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="Body"]
 zoom = Vector2(3, 3)
