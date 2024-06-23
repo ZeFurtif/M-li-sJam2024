@@ -101,3 +101,6 @@ func kill_soul():
 func set_soul_vignette(alpha):
 	var cur_alpha = $Body/Camera2D/CanvasLayer/SoulVignette.material.get("shader_parameter/alpha")
 	$Body/Camera2D/CanvasLayer/SoulVignette.material.set("shader_parameter/alpha",move_toward(cur_alpha, alpha, 0.1))
+
+func die():
+	queue_free()

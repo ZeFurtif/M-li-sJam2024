@@ -16,22 +16,22 @@ func _process(delta):
 func _on_fire_souls_01_body_entered(body):
 	print(body.name)
 	if(body.name == "Body"):
-		print("souls01 its player mtf")
+		body.die()
 
 
 func _on_fire_souls_02_body_entered(body):
 	print(body.name)
 	if(body.name == "Body"):
-		print("souls02 its player mtf")
+		body.die()
 
 
 func _on_fire_souls_03_body_entered(body):
 	print(body.name)
 	if(body.name == "Body"):
-		print("souls03 its player mtf")
+		body.die()
 
 
 func _on_fire_souls_04_body_entered(body):
 	print(body.name)
 	if(body.name == "Body"):
-		print("souls04 its player mtf")
+		body.Pla()
