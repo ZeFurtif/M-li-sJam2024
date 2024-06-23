@@ -5,7 +5,7 @@ var PLAYING_BODY = true
 
 const BODY_SPEED = 120
 const SOUL_SPEED = 100
-const JUMP_VELOCITY = -250
+const JUMP_VELOCITY = -350
 
 @onready var ap = $Body/AnimationPlayer
 @onready var sprite = $Sprite2D

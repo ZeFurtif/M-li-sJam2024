@@ -9,7 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://3fkauwuq2cia" path="res://Anim/Test/_Fall.png" id="6_n1wwu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mhv57"]
-height = 40.0
+radius = 8.0
+height = 38.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jk6qy"]
 animations = [{
@@ -340,6 +341,7 @@ shape = SubResource("CapsuleShape2D_mhv57")
 visible = false
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_jk6qy")
+frame_progress = 0.49191
 
 [node name="Sprite2D" type="Sprite2D" parent="Body"]
 position = Vector2(5, -21)
