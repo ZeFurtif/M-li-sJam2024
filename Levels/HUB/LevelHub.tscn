@@ -1,22 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://coriii4vahu06"]
+[gd_scene load_steps=9 format=3 uid="uid://coriii4vahu06"]
 
 [ext_resource type="Script" path="res://Scripts/LockCameraY.gd" id="1_eoiur"]
 [ext_resource type="PackedScene" uid="uid://dukhtm8jquwvs" path="res://Prefabs/player.tscn" id="1_shvoh"]
 [ext_resource type="Texture2D" uid="uid://8cvep2fixok6" path="res://Assets/Decor/Tile/HUB/BUB_PLAN2.png" id="2_51tqd"]
 [ext_resource type="Texture2D" uid="uid://bwlbawbdhyhlt" path="res://Assets/Decor/Tile/HUB/BUB_PLAN1.png" id="3_pf5uf"]
+[ext_resource type="Script" path="res://Levels/HUB/LevelA.gd" id="5_ig7n1"]
+[ext_resource type="Script" path="res://Levels/HUB/LevelB.gd" id="6_ehspt"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fm8rh"]
 distance = 39.0935
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_htm4m"]
-radius = 13.0
-height = 264.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2k3k"]
+size = Vector2(39.9667, 326.737)
 
 [node name="LevelHub" type="Node2D"]
 script = ExtResource("1_eoiur")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(40, -79)
+position = Vector2(33, 88)
 scale = Vector2(0.353, 0.353)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -25,36 +26,53 @@ scale = Vector2(5, 5)
 shape = SubResource("WorldBoundaryShape2D_fm8rh")
 
 [node name="Player" parent="." instance=ExtResource("1_shvoh")]
-position = Vector2(26, -27)
+position = Vector2(-133, 109)
+scale = Vector2(2, 2)
+
+[node name="ParallaxFT" type="ParallaxBackground" parent="."]
+layer = 1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxFT"]
+position = Vector2(83.9, -100)
+motion_mirroring = Vector2(1790, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxFT/ParallaxLayer"]
+position = Vector2(-42.5, 95.05)
+scale = Vector2(0.315, 0.346)
+texture = ExtResource("3_pf5uf")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(83, -105)
-motion_mirroring = Vector2(1135, 0)
+position = Vector2(83.9, -100)
+motion_mirroring = Vector2(1790, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(-90, -190)
-scale = Vector2(0.2, 0.2)
+position = Vector2(-42.5, 95.05)
+scale = Vector2(0.315, 0.346)
 texture = ExtResource("2_51tqd")
 
-[node name="ParallaxFG" type="ParallaxBackground" parent="."]
-layer = 1
+[node name="LevelA2" type="Area2D" parent="."]
+position = Vector2(59.8248, -882.187)
+scale = Vector2(1.00166, 0.965192)
+script = ExtResource("6_ehspt")
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxFG"]
-z_index = 1
-position = Vector2(83, -105)
-motion_mirroring = Vector2(1135, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxFG/ParallaxLayer"]
-z_index = 1
-position = Vector2(-90, -190)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_pf5uf")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelA2"]
+position = Vector2(254.752, 928.506)
+scale = Vector2(0.999999, 1)
+shape = SubResource("RectangleShape2D_c2k3k")
 
 [node name="LevelA" type="Area2D" parent="."]
-position = Vector2(29, -450)
+position = Vector2(29.9, -445)
+scale = Vector2(1.00083, 0.982442)
+script = ExtResource("5_ig7n1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelA"]
-position = Vector2(-150, 328)
-shape = SubResource("CapsuleShape2D_htm4m")
+position = Vector2(-307.644, 468.221)
+scale = Vector2(0.999999, 1)
+shape = SubResource("RectangleShape2D_c2k3k")
+
+[connection signal="body_entered" from="LevelA2" to="LevelA2" method="_on_body_entered"]
+[connection signal="body_exited" from="LevelA2" to="LevelA2" method="_on_body_exited"]
+[connection signal="body_entered" from="LevelA" to="LevelA" method="_on_body_entered"]
+[connection signal="body_exited" from="LevelA" to="LevelA" method="_on_body_exited"]

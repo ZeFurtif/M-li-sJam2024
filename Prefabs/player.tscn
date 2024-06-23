@@ -417,7 +417,7 @@ glow_map_strength = 1.0
 [node name="Player" type="Node2D"]
 script = ExtResource("1_5awsi")
 
-[node name="Body" type="CharacterBody2D" parent="."]
+[node name="Body" type="CharacterBody2D" parent="." groups=["player_body"]]
 collision_layer = 3
 
 [node name="PointLight2D" type="PointLight2D" parent="Body"]
