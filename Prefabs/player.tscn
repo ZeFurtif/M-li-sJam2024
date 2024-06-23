@@ -1,18 +1,27 @@
-[gd_scene load_steps=79 format=3 uid="uid://dukhtm8jquwvs"]
+[gd_scene load_steps=91 format=3 uid="uid://dukhtm8jquwvs"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_5awsi"]
+[ext_resource type="Texture2D" uid="uid://ckahaeunarfqg" path="res://Assets/Player/Body/ATTACK1/MARCEL_ATACK_1.png" id="2_6j2t1"]
 [ext_resource type="Shader" path="res://Shaders/vignette.gdshader" id="2_euhcv"]
 [ext_resource type="Texture2D" uid="uid://ib6ypuh6lbe8" path="res://Assets/Placeholder/brawlbot_trans.png" id="2_lx07d"]
+[ext_resource type="Texture2D" uid="uid://vmetmd8m2lye" path="res://Assets/Player/Body/ATTACK1/MARCEL_ATACK_2.png" id="3_f2bmk"]
 [ext_resource type="Texture2D" uid="uid://c8iba0jhsw7mq" path="res://Assets/Player/Body/HIT/MARCEL_ENCAISSE00000.png" id="3_hiwfi"]
+[ext_resource type="Texture2D" uid="uid://cr6aj4gxpsbsu" path="res://Assets/Player/Body/ATTACK1/MARCEL_ATACK_3.png" id="4_1xtnm"]
 [ext_resource type="Shader" path="res://Shaders/chroma_aberration.gdshader" id="4_lyru5"]
 [ext_resource type="Texture2D" uid="uid://cn2snujlv7yvg" path="res://Assets/Player/Body/HIT/MARCEL_ENCAISSE00001.png" id="4_nmm5o"]
 [ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="4_shgdw"]
+[ext_resource type="Texture2D" uid="uid://bjw0xxiwvmgco" path="res://Assets/Player/Body/ATTACK1/MARCEL_ATACK_4.png" id="5_di3jb"]
 [ext_resource type="Texture2D" uid="uid://bm46tfhdxm31n" path="res://Assets/Player/Body/HIT/MARCEL_ENCAISSE00002.png" id="5_ynk8y"]
 [ext_resource type="StyleBox" uid="uid://cg8del86cupok" path="res://Levels/MENU/focus_style.tres" id="6_iibem"]
+[ext_resource type="Texture2D" uid="uid://bs2uygh6lu8pn" path="res://Assets/Player/Body/ATTACK1/MARCEL_ATACK_5.png" id="6_l2hx7"]
 [ext_resource type="Texture2D" uid="uid://bbysythly8bcl" path="res://Assets/Player/Body/HIT/MARCEL_ENCAISSE00003.png" id="6_yakgt"]
 [ext_resource type="Texture2D" uid="uid://cryuby3gtnxkx" path="res://Assets/Player/Body/HIT/MARCEL_ENCAISSE00004.png" id="7_415wt"]
+[ext_resource type="Texture2D" uid="uid://b36gha7gx13gf" path="res://Assets/Player/Body/ATTACK1/MARCEL_ATACK_6.png" id="7_sjdkf"]
 [ext_resource type="Texture2D" uid="uid://b6xsu3xtid4im" path="res://Assets/Player/Body/HIT/MARCEL_ENCAISSE00005.png" id="8_lvlr4"]
+[ext_resource type="Texture2D" uid="uid://b6yaybiq5ynww" path="res://Assets/Player/Body/ATTACK1/MARCEL_ATACK_7.png" id="8_rwb4f"]
+[ext_resource type="Texture2D" uid="uid://2p3g0v7aookc" path="res://Assets/Player/Body/ATTACK1/MARCEL_ATACK_8.png" id="9_gew3f"]
 [ext_resource type="Texture2D" uid="uid://bsgtxjmfisbda" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00000.png" id="9_hsn0d"]
+[ext_resource type="Texture2D" uid="uid://bvpvu5gl5h1a8" path="res://Assets/Player/Body/ATTACK1/MARCEL_ATACK_9.png" id="10_apc4h"]
 [ext_resource type="Texture2D" uid="uid://bicvk65acp1rm" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00001.png" id="10_w22mu"]
 [ext_resource type="Texture2D" uid="uid://m8qcf3cafuku" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00002.png" id="11_nrk5h"]
 [ext_resource type="Texture2D" uid="uid://b8gr2mwykqftr" path="res://Assets/Player/Body/IDLE/MARCEL_IDLE00003.png" id="12_waknq"]
@@ -73,12 +82,55 @@
 [ext_resource type="Texture2D" uid="uid://5d4dosqqcv7d" path="res://Assets/Player/Body/WALK/WALK_v24.png" id="67_qmxxt"]
 [ext_resource type="Texture2D" uid="uid://bwccqbeaslech" path="res://Assets/Player/Body/WALK/WALK_v25.png" id="68_82l2s"]
 
+[sub_resource type="Gradient" id="Gradient_4i2oa"]
+offsets = PackedFloat32Array(0, 0.134021, 0.164948, 0.28866, 0.335052, 0.757732)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.705882, 1, 1, 0.996078, 0.705882, 1, 1, 0.996078, 0.509804, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vtase"]
+gradient = SubResource("Gradient_4i2oa")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.491453, 0.478632)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0gbl3"]
 radius = 8.0
 height = 32.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_em1l4"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6j2t1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f2bmk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1xtnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_di3jb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l2hx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sjdkf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rwb4f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gew3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_apc4h")
+}],
+"loop": false,
+"name": &"attack1",
+"speed": 30.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_lx07d")
@@ -349,10 +401,27 @@ shader_parameter/roll_speed = 1.0
 shader_parameter/scan_line_strength = -8.0
 shader_parameter/pixel_strength = -2.0
 
+[sub_resource type="Environment" id="Environment_8tic6"]
+background_mode = 3
+ambient_light_source = 2
+ambient_light_color = Color(0.668174, 0.206816, 1, 1)
+glow_enabled = true
+glow_intensity = 0.7
+glow_strength = 0.61
+glow_bloom = 0.66
+glow_blend_mode = 0
+glow_hdr_threshold = 2.0
+glow_hdr_luminance_cap = 2.0
+glow_map_strength = 1.0
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_5awsi")
 
 [node name="Body" type="CharacterBody2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="Body"]
+color = Color(0.278431, 1, 1, 1)
+texture = SubResource("GradientTexture2D_vtase")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
 position = Vector2(0, 8)
@@ -361,9 +430,10 @@ shape = SubResource("CapsuleShape2D_0gbl3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body"]
 scale = Vector2(0.0444444, 0.0444444)
 sprite_frames = SubResource("SpriteFrames_em1l4")
-animation = &"walk"
+animation = &"attack1"
 autoplay = "idle"
-frame_progress = 0.799995
+frame = 8
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="Body"]
 zoom = Vector2(3, 3)
@@ -515,6 +585,9 @@ grow_vertical = 2
 theme_override_styles/focus = ExtResource("6_iibem")
 text = "QUIT
 "
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8tic6")
 
 [connection signal="pressed" from="Body/Camera2D/CanvasLayerUI/MENU/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Body/Camera2D/CanvasLayerUI/MENU/TitleMenu" to="." method="_on_title_menu_pressed"]

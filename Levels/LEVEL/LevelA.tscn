@@ -269,7 +269,7 @@ layer_1/tile_data = PackedInt32Array(327662, 196608, 1, 262149, 196608, 0, 32767
 
 [node name="Night" type="DirectionalLight2D" parent="."]
 color = Color(1, 0.71249, 0.629246, 1)
-energy = 0.8
+energy = 0.5
 blend_mode = 1
 
 [node name="BackLight" type="DirectionalLight2D" parent="."]
