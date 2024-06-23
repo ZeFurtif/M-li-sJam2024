@@ -6,11 +6,20 @@ var last_damage = 0
 var shake_speed = 2
 var shake_amplitude = 0
 
+var IN_MENU = false
+
 func _ready():
 	soul_target = $Body.position + Vector2(0, -20)
 	PlayerGlobals._event_damage_received.connect(_on_health_change)
 
 func _process(delta):
+	
+	if Input.is_action_just_pressed("menu"):
+		IN_MENU = !IN_MENU
+	$Body/Camera2D/CanvasLayerUI/MENU.visible = IN_MENU
+	$Body/Camera2D/CanvasLayer/CRT.visible = IN_MENU
+	if IN_MENU:
+		return
 	
 	if PlayerGlobals.SOULS_AMOUNT > 0 and Input.is_action_just_pressed("switch"):
 		PlayerGlobals.PLAYING_BODY = !PlayerGlobals.PLAYING_BODY
@@ -203,3 +212,13 @@ func shake_cam():
 		$Body/Camera2D.position = Vector2(0,0)
 		return
 	$Body/Camera2D.position = Vector2(sin(Time.get_ticks_msec()+50*shake_speed),sin(Time.get_ticks_msec()*shake_speed)) * shake_amplitude
+
+
+func _on_resume_pressed():
+	IN_MENU = false
+
+func _on_quit_pressed():
+	get_tree().quit()
+
+func _on_title_menu_pressed():
+	get_tree().change_scene_to_file("res://Level/title_menu.tscn")

@@ -57,3 +57,6 @@ func _on_ambient_ends():
 	ambientIdx += 1
 	if ambientIdx >= len(ambientStreams):
 		ambientIdx = 0
+		
+func change_volume(value):
+	AudioServer.set_bus_volume_db(0, value)

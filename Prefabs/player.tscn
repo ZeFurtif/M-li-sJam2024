@@ -116,6 +116,7 @@ size_flags_vertical = 3
 
 [node name="CRT" type="ColorRect" parent="Body/Camera2D/CanvasLayer"]
 visible = false
+z_index = 50
 material = SubResource("ShaderMaterial_ohjvk")
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,13 +125,98 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="CanvasLayerUI" type="CanvasLayer" parent="Body/Camera2D"]
 
-[node name="Control" type="Control" parent="Body/Camera2D/CanvasLayerUI"]
+[node name="MENU" type="Control" parent="Body/Camera2D/CanvasLayerUI"]
+visible = false
+z_index = 51
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Body/Camera2D/CanvasLayerUI/MENU"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -140.0
+offset_right = 224.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.205117, 0.205117, 0.205117, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Body/Camera2D/CanvasLayerUI/MENU"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = -132.0
+offset_right = 213.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.691357, 0.691357, 0.691357, 1)
+
+[node name="Resume" type="Button" parent="Body/Camera2D/CanvasLayerUI/MENU"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -116.0
+offset_right = 192.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RESUME
+"
+
+[node name="TitleMenu" type="Button" parent="Body/Camera2D/CanvasLayerUI/MENU"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -36.0
+offset_right = 192.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TITLE MENU
+"
+
+[node name="Quit" type="Button" parent="Body/Camera2D/CanvasLayerUI/MENU"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = 44.0
+offset_right = 192.0
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "QUIT
+"
+
+[connection signal="pressed" from="Body/Camera2D/CanvasLayerUI/MENU/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Body/Camera2D/CanvasLayerUI/MENU/TitleMenu" to="." method="_on_title_menu_pressed"]
+[connection signal="pressed" from="Body/Camera2D/CanvasLayerUI/MENU/Quit" to="." method="_on_quit_pressed"]
