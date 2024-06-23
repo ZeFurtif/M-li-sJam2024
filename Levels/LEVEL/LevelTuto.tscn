@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6jyjaewn0x3y"]
+[gd_scene load_steps=15 format=3 uid="uid://b6jyjaewn0x3y"]
 
 [ext_resource type="Script" path="res://Scripts/LockCameraY.gd" id="1_wp40k"]
 [ext_resource type="PackedScene" uid="uid://dukhtm8jquwvs" path="res://Prefabs/player.tscn" id="2_qfre3"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cp2ck6bf10htk" path="res://Assets/Decor/Tile/CHAINE/props/Tilemap_props.png" id="4_g1y41"]
 [ext_resource type="Texture2D" uid="uid://dddrkqme45eaa" path="res://Assets/Decor/LevelTuto/SOUTIENT_CLEAN2.png" id="5_7fv1u"]
 [ext_resource type="Texture2D" uid="uid://duxwdbkduf3tg" path="res://Assets/Decor/LevelTuto/SOUTIENT_CLEAN3.png" id="6_3u8al"]
+[ext_resource type="PackedScene" uid="uid://cu3ewa0phgijb" path="res://Prefabs/Key.tscn" id="8_4wpw3"]
+[ext_resource type="PackedScene" uid="uid://cvwdaqy2reix7" path="res://Prefabs/interactible.tscn" id="9_ysiu1"]
+[ext_resource type="Script" path="res://Levels/HUB/LevelHub.gd" id="10_y85mo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bmvnk"]
 texture = ExtResource("3_mudhd")
@@ -15008,6 +15011,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_bmvnk")
 sources/2 = SubResource("TileSetAtlasSource_irn3s")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxcyw"]
+size = Vector2(107, 57)
+
 [node name="LevelTuto" type="Node2D"]
 position = Vector2(0, 15)
 script = ExtResource("1_wp40k")
@@ -15064,3 +15070,19 @@ z_index = 1
 position = Vector2(-15, 187)
 scale = Vector2(0.326675, 0.326675)
 texture = ExtResource("6_3u8al")
+
+[node name="SHAPE" parent="." instance=ExtResource("8_4wpw3")]
+position = Vector2(-428, 80)
+
+[node name="INTERACTIBLE" parent="." instance=ExtResource("9_ysiu1")]
+position = Vector2(313, 77)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("10_y85mo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(678, 25)
+shape = SubResource("RectangleShape2D_qxcyw")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

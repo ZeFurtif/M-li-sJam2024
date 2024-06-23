@@ -42,3 +42,7 @@ func take_damage(damage):
 
 func gain_soul():
 	MAX_SOULS += 1
+
+func new_scene():
+	SOULS_AMOUNT = 0
+	BOUND = [false, false, false]

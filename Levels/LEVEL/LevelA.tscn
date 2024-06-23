@@ -294,3 +294,11 @@ SHAPE = 1
 [node name="INTERACTIBLE" parent="." instance=ExtResource("14_ytish")]
 position = Vector2(280, 814)
 SHAPE_HOLE = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = -64.0
+offset_top = 678.0
+offset_right = 100.0
+offset_bottom = 727.0
+text = "BRAVO
+va toucher de l'herbe"

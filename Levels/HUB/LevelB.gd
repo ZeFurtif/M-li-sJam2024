@@ -10,6 +10,7 @@ func _ready():
 func _process(_delta):
 	if entered == true:
 		if Input.is_action_just_pressed("interaction"):
+			PlayerGlobals.new_scene()
 			get_tree().change_scene_to_packed(pscene)
 
 func _on_body_exited(body):

@@ -1,7 +1,7 @@
 extends Area2D
 
 var entered = false
-var pscene = load("res://Levels/LEVEL/LevelA.tscn")
+var pscene = load("res://Levels/HUB/LevelHub.tscn")
 
 func _ready():
 	entered = false
