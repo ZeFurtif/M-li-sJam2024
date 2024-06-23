@@ -25,7 +25,7 @@ func updateUI():
 		$CanvasLayer/CREDITS.visible = true
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://Scenes/EVA_unitTest.tscn")
+	get_tree().change_scene_to_file("res://Levels/LEVEL/LevelA.tscn")
 
 func _on_settings_pressed():
 	CURRENT_STATE = menuState.SETTINGS

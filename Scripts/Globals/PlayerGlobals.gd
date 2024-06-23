@@ -11,7 +11,7 @@ var BOUND_POS = [Vector2.ZERO, Vector2.ZERO, Vector2.ZERO]
 var MAX_SOULS = 3
 var SOULS_AMOUNT = 0
 var BINDING_LOCATION
-const BODY_SPEED = 120
+const BODY_SPEED = 100
 const SOUL_SPEED = 100
 const JUMP_VELOCITY = -350
 

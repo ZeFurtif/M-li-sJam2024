@@ -57,11 +57,13 @@ func _process(delta):
 
 func handle_body_movement(delta):
 	var body = find_child("Body")
+	var jumped = false
 	if not body.is_on_floor():
 		body.velocity.y += gravity * delta
 	
 	if Input.is_action_pressed("jump") and body.is_on_floor():
 		body.velocity.y = PlayerGlobals.JUMP_VELOCITY
+		jumped = true
 
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
@@ -72,6 +74,7 @@ func handle_body_movement(delta):
 			body.find_child("AnimatedSprite2D").flip_h = false
 	else:
 		body.velocity.x = move_toward(body.velocity.x, 0, PlayerGlobals.BODY_SPEED)
+	handle_body_animations(direction, jumped)
 	body.move_and_slide()
 
 func handle_body_follow(delta):
@@ -80,6 +83,18 @@ func handle_body_follow(delta):
 	if not body.is_on_floor():
 		body.velocity.y += gravity * delta
 	body.move_and_slide()
+
+func handle_body_animations(direction, jump):
+	if $Body.is_on_floor():
+		if direction == 0:
+			$Body/AnimatedSprite2D.play("idle")
+		else:
+			$Body/AnimatedSprite2D.play("walk")
+	else:
+		if $Body.velocity.y < 0:
+			$Body/AnimatedSprite2D.play("jump")
+		elif $Body.velocity.y >= 0:
+			$Body/AnimatedSprite2D.play("falling")
 
 func handle_soul_movement(delta):
 	var souls = get_children()
@@ -162,6 +177,7 @@ func _on_health_change(damage):
 	if damage > 0:
 		set_chromatic_aberration(10, 0.01)
 		shake_amplitude = 20
+		$Body/AnimatedSprite2D.play("hit")
 
 #func handle_soul_beam():
 #	var souls = get_children()
@@ -224,4 +240,4 @@ func _on_quit_pressed():
 	get_tree().quit()
 
 func _on_title_menu_pressed():
-	get_tree().change_scene_to_file("res://Level/title_menu.tscn")
+	get_tree().change_scene_to_file("res://Levels/MENU/title_menu.tscn")

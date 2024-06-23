@@ -178,6 +178,7 @@ offset_left = 1736.0
 offset_top = 424.0
 offset_right = 1808.0
 offset_bottom = 488.0
+theme_override_styles/focus = ExtResource("3_xkvuk")
 icon = ExtResource("7_yc2u0")
 icon_alignment = 1
 expand_icon = true

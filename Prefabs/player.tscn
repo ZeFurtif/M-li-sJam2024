@@ -1,13 +1,45 @@
-[gd_scene load_steps=13 format=3 uid="uid://dukhtm8jquwvs"]
+[gd_scene load_steps=43 format=3 uid="uid://dukhtm8jquwvs"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_5awsi"]
 [ext_resource type="Shader" path="res://Shaders/vignette.gdshader" id="2_euhcv"]
 [ext_resource type="Texture2D" uid="uid://ib6ypuh6lbe8" path="res://Assets/Placeholder/brawlbot_trans.png" id="2_lx07d"]
+[ext_resource type="Texture2D" uid="uid://c8iba0jhsw7mq" path="res://Assets/Player/Body/HIT/MARCEL_ENCAISSE00000.png" id="3_hiwfi"]
+[ext_resource type="Texture2D" uid="uid://chj3xqlgfp8wf" path="res://Assets/Player/Body/WALK/MARCEL_WALK00000.png" id="3_lcgfx"]
+[ext_resource type="Texture2D" uid="uid://cvgxkpjkb2nom" path="res://Assets/Player/Body/WALK/MARCEL_WALK00001.png" id="4_d6feb"]
 [ext_resource type="Shader" path="res://Shaders/chroma_aberration.gdshader" id="4_lyru5"]
+[ext_resource type="Texture2D" uid="uid://cn2snujlv7yvg" path="res://Assets/Player/Body/HIT/MARCEL_ENCAISSE00001.png" id="4_nmm5o"]
 [ext_resource type="Shader" path="res://Shaders/crt.gdshader" id="4_shgdw"]
+[ext_resource type="Texture2D" uid="uid://cjt6gq1bnokav" path="res://Assets/Player/Body/WALK/MARCEL_WALK00002.png" id="5_x782r"]
+[ext_resource type="Texture2D" uid="uid://bm46tfhdxm31n" path="res://Assets/Player/Body/HIT/MARCEL_ENCAISSE00002.png" id="5_ynk8y"]
+[ext_resource type="Texture2D" uid="uid://2i2gre6w5sen" path="res://Assets/Player/Body/WALK/MARCEL_WALK00003.png" id="6_6unqv"]
 [ext_resource type="StyleBox" uid="uid://cg8del86cupok" path="res://Levels/MENU/focus_style.tres" id="6_iibem"]
+[ext_resource type="Texture2D" uid="uid://bbysythly8bcl" path="res://Assets/Player/Body/HIT/MARCEL_ENCAISSE00003.png" id="6_yakgt"]
+[ext_resource type="Texture2D" uid="uid://cryuby3gtnxkx" path="res://Assets/Player/Body/HIT/MARCEL_ENCAISSE00004.png" id="7_415wt"]
+[ext_resource type="Texture2D" uid="uid://d10hlrlubaq8l" path="res://Assets/Player/Body/WALK/MARCEL_WALK00004.png" id="7_gc4o6"]
+[ext_resource type="Texture2D" uid="uid://b6xsu3xtid4im" path="res://Assets/Player/Body/HIT/MARCEL_ENCAISSE00005.png" id="8_lvlr4"]
+[ext_resource type="Texture2D" uid="uid://bvjbi600p75wb" path="res://Assets/Player/Body/WALK/MARCEL_WALK00005.png" id="8_p22lm"]
+[ext_resource type="Texture2D" uid="uid://dlmah0dow86qg" path="res://Assets/Player/Body/WALK/MARCEL_WALK00006.png" id="9_2kh8d"]
+[ext_resource type="Texture2D" uid="uid://dwk3wlukj53gm" path="res://Assets/Player/Body/WALK/MARCEL_WALK00007.png" id="10_lognt"]
+[ext_resource type="Texture2D" uid="uid://bo1h3bsp21k4m" path="res://Assets/Player/Body/WALK/MARCEL_WALK00008.png" id="11_hbo63"]
+[ext_resource type="Texture2D" uid="uid://bwv3arr3sct7f" path="res://Assets/Player/Body/WALK/MARCEL_WALK00009.png" id="12_4byqv"]
+[ext_resource type="Texture2D" uid="uid://4xxdv47duquc" path="res://Assets/Player/Body/WALK/MARCEL_WALK00010.png" id="13_bwa4j"]
+[ext_resource type="Texture2D" uid="uid://da6s24evbadcr" path="res://Assets/Player/Body/WALK/MARCEL_WALK00011.png" id="14_l4qgd"]
+[ext_resource type="Texture2D" uid="uid://def10aggkrt73" path="res://Assets/Player/Body/WALK/MARCEL_WALK00012.png" id="15_ig1bs"]
+[ext_resource type="Texture2D" uid="uid://bg7fkdo2vjms5" path="res://Assets/Player/Body/WALK/MARCEL_WALK00013.png" id="16_188bx"]
+[ext_resource type="Texture2D" uid="uid://bs6gf78015ys5" path="res://Assets/Player/Body/WALK/MARCEL_WALK00014.png" id="17_27l4r"]
+[ext_resource type="Texture2D" uid="uid://cvr07ykj0whym" path="res://Assets/Player/Body/WALK/MARCEL_WALK00015.png" id="18_58ce6"]
+[ext_resource type="Texture2D" uid="uid://ky7kqpdcuhrr" path="res://Assets/Player/Body/WALK/MARCEL_WALK00016.png" id="19_alpjk"]
+[ext_resource type="Texture2D" uid="uid://b16axg3g35g2b" path="res://Assets/Player/Body/WALK/MARCEL_WALK00017.png" id="20_e82tq"]
+[ext_resource type="Texture2D" uid="uid://j4idsufeuqar" path="res://Assets/Player/Body/WALK/MARCEL_WALK00018.png" id="21_j4laq"]
+[ext_resource type="Texture2D" uid="uid://b2qqkriy3nc5u" path="res://Assets/Player/Body/WALK/MARCEL_WALK00019.png" id="22_oox0e"]
+[ext_resource type="Texture2D" uid="uid://bclr3nilqimrq" path="res://Assets/Player/Body/WALK/MARCEL_WALK00020.png" id="23_iwyru"]
+[ext_resource type="Texture2D" uid="uid://covp57a7o457n" path="res://Assets/Player/Body/WALK/MARCEL_WALK00021.png" id="24_dhmpv"]
+[ext_resource type="Texture2D" uid="uid://clx77khdeutui" path="res://Assets/Player/Body/WALK/MARCEL_WALK00022.png" id="25_loqpp"]
+[ext_resource type="Texture2D" uid="uid://n4rn0slv6c76" path="res://Assets/Player/Body/WALK/MARCEL_WALK00023.png" id="26_5xets"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0gbl3"]
+radius = 8.0
+height = 32.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_em1l4"]
 animations = [{
@@ -16,8 +48,124 @@ animations = [{
 "texture": ExtResource("2_lx07d")
 }],
 "loop": true,
-"name": &"default",
+"name": &"falling",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_hiwfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nmm5o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ynk8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yakgt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_415wt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lvlr4")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lx07d")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lx07d")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lcgfx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d6feb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x782r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6unqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gc4o6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_p22lm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2kh8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lognt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hbo63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4byqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bwa4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_l4qgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ig1bs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_188bx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_27l4r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_58ce6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_alpjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_e82tq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_j4laq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_oox0e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_iwyru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_dhmpv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_loqpp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_5xets")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 30.0
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8xt4"]
@@ -66,11 +214,15 @@ script = ExtResource("1_5awsi")
 [node name="Body" type="CharacterBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_0gbl3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body"]
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.0444444, 0.0444444)
 sprite_frames = SubResource("SpriteFrames_em1l4")
+animation = &"walk"
+autoplay = "idle"
+frame_progress = 0.0665236
 
 [node name="Camera2D" type="Camera2D" parent="Body"]
 zoom = Vector2(3, 3)
