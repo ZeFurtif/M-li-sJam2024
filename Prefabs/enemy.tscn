@@ -50,10 +50,8 @@ collision_mask = 4
 [node name="RayCast2DRight" type="RayCast2D" parent="Enemy_Body"]
 position = Vector2(0, -10)
 target_position = Vector2(20, 0)
-collision_mask = 2
+collision_mask = 4
 
-[node name="Area2D" type="Area2D" parent="Enemy_Body"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Body/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Body"]
 position = Vector2(-0.5, -23)
 shape = SubResource("RectangleShape2D_3xywy")

@@ -11,3 +11,12 @@ func who_are_you():
 			print("its enemy_tank name")
 		"enemy_speeder":
 			print("its falsh_mcqueen name")
+
+func spell():
+	match type:
+		{}:
+			print("Empty")
+		"enemy_tank":
+			preload("res://FX/enemy_souls.tres")
+		"enemy_speeder":
+			movement_speed = 80
