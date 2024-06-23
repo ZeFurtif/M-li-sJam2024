@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://dukhtm8jquwvs"]
+[gd_scene load_steps=103 format=3 uid="uid://dukhtm8jquwvs"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_5awsi"]
 [ext_resource type="Texture2D" uid="uid://ckahaeunarfqg" path="res://Assets/Player/Body/ATTACK1/MARCEL_ATACK_1.png" id="2_6j2t1"]
@@ -112,6 +112,9 @@ height = 32.0
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("7_sjdkf")
+}, {
+"duration": 1.0,
 "texture": ExtResource("2_6j2t1")
 }, {
 "duration": 1.0,
@@ -128,9 +131,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_l2hx7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_sjdkf")
 }, {
 "duration": 1.0,
 "texture": ExtResource("9_gew3f")
@@ -447,6 +447,9 @@ shader_parameter/roll_speed = 1.0
 shader_parameter/scan_line_strength = -8.0
 shader_parameter/pixel_strength = -2.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0nbwv"]
+size = Vector2(14, 22)
+
 [sub_resource type="Environment" id="Environment_8tic6"]
 background_mode = 3
 ambient_light_source = 2
@@ -476,10 +479,8 @@ shape = SubResource("CapsuleShape2D_0gbl3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body"]
 scale = Vector2(0.0444444, 0.0444444)
 sprite_frames = SubResource("SpriteFrames_em1l4")
-animation = &"attack2"
+animation = &"attack1"
 autoplay = "idle"
-frame = 8
-frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="Body"]
 zoom = Vector2(3, 3)
@@ -632,9 +633,17 @@ theme_override_styles/focus = ExtResource("6_iibem")
 text = "QUIT
 "
 
+[node name="Area_Melee" type="Area2D" parent="Body"]
+position = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Area_Melee"]
+position = Vector2(16, 6)
+shape = SubResource("RectangleShape2D_0nbwv")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8tic6")
 
 [connection signal="pressed" from="Body/Camera2D/CanvasLayerUI/MENU/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Body/Camera2D/CanvasLayerUI/MENU/TitleMenu" to="." method="_on_title_menu_pressed"]
 [connection signal="pressed" from="Body/Camera2D/CanvasLayerUI/MENU/Quit" to="." method="_on_quit_pressed"]
+[connection signal="body_entered" from="Body/Area_Melee" to="." method="_on_area_melee_body_entered"]

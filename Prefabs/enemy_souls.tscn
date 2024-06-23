@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://e2wj2852x8ad"]
+[gd_scene load_steps=6 format=3 uid="uid://e2wj2852x8ad"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/enemy_souls.gd" id="1_ptm67"]
 [ext_resource type="Texture2D" uid="uid://bwh34q67mwb4i" path="res://Assets/Player/Soul/faded_sphere.png" id="2_q2nms"]
@@ -6,14 +6,17 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i4gix"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_t74ag"]
+radius = 6.0
+
 [node name="EnemySouls" type="Node2D"]
 script = ExtResource("1_ptm67")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 gravity_scale = 0.55
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-scale = Vector2(0.6, 0.6)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" groups=["enemy"]]
+scale = Vector2(0.25, 0.25)
 shape = SubResource("CircleShape2D_i4gix")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="RigidBody2D/CollisionShape2D"]
@@ -21,4 +24,9 @@ amount = 100
 process_material = ExtResource("3_05gl6")
 texture = ExtResource("2_q2nms")
 
-[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
+[node name="Col_Souls" type="Area2D" parent="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Col_Souls"]
+shape = SubResource("CircleShape2D_t74ag")
+
+[connection signal="body_entered" from="RigidBody2D/Col_Souls" to="." method="_on_area_2d_body_entered"]

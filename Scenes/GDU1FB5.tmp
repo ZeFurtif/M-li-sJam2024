@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfgptuaawmais"]
+
+[ext_resource type="PackedScene" uid="uid://dukhtm8jquwvs" path="res://Prefabs/player.tscn" id="1_5lwia"]
+[ext_resource type="PackedScene" uid="uid://beerwmecwodg1" path="res://Prefabs/enemy.tscn" id="2_3br0c"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ptp8n"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dok0u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6805"]
+size = Vector2(60.5, 20)
+
+[node name="GDU_TestUnit" type="Node2D"]
+
+[node name="World_Col" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World_Col"]
+shape = SubResource("WorldBoundaryShape2D_ptp8n")
+
+[node name="Player" parent="." instance=ExtResource("1_5lwia")]
+position = Vector2(-110, -31)
+
+[node name="Enemy" parent="." instance=ExtResource("2_3br0c")]
+position = Vector2(137, -32)
+
+[node name="Case_01" type="StaticBody2D" parent="." groups=["col"]]
+position = Vector2(329, 0)
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Case_01" groups=["col"]]
+material = SubResource("CanvasItemMaterial_dok0u")
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_f6805")
+
+[node name="Case_02" type="StaticBody2D" parent="." groups=["col"]]
+position = Vector2(49, -25)
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Case_02" groups=["col"]]
+material = SubResource("CanvasItemMaterial_dok0u")
+shape = SubResource("RectangleShape2D_f6805")
+
+[node name="Case_03" type="StaticBody2D" parent="." groups=["col"]]
+position = Vector2(128, -77)
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Case_03" groups=["col"]]
+material = SubResource("CanvasItemMaterial_dok0u")
+shape = SubResource("RectangleShape2D_f6805")
+
+[node name="Case_04" type="StaticBody2D" parent="." groups=["col"]]
+position = Vector2(-110, -66)
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Case_04" groups=["col"]]
+material = SubResource("CanvasItemMaterial_dok0u")
+shape = SubResource("RectangleShape2D_f6805")
+
+[node name="Case_05" type="StaticBody2D" parent="." groups=["col"]]
+position = Vector2(-213, -14)
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Case_05" groups=["col"]]
+material = SubResource("CanvasItemMaterial_dok0u")
+shape = SubResource("RectangleShape2D_f6805")
